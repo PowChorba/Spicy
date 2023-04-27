@@ -11,6 +11,8 @@ export class Category {
     @Prop({required: true})
     name: string
 
+    @Prop({required: true})
+    idCategory: number
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category)

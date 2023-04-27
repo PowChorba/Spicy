@@ -10,4 +10,5 @@ export type VideosSchema = {
 
 export type CategoryPost = {
   name:string
+  idCategory: number
 }

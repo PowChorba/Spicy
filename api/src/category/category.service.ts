@@ -10,7 +10,8 @@ export class CategoryService {
 
     async newCategory(newCat: CategoryPost): Promise<Category> { 
         const category = await new this.categoryModel({
-            name: newCat.name
+            name: newCat.name,
+            idCategory: newCat.idCategory
         })
 
         return category.save()

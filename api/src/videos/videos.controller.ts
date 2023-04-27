@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get } from '@nestjs/common';
+import { Body, Controller, Post, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { VideosService } from './videos.service';
 import { VideosSchema } from 'types';
 
@@ -14,5 +14,10 @@ export class VideosController {
     @Post()
     createVideo(@Body() createOne: VideosSchema){
         return this.videosService.newVideo(createOne)
+    }
+
+    @Get(':category')
+    findById(@Param('category', ParseIntPipe) id: number){
+        return this.videosService.findById(id)
     }
 }

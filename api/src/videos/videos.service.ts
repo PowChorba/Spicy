@@ -27,6 +27,19 @@ export class VideosService {
     }
 
     async findAll(){
-        return this.videosModel.find()
+        const allVideos = await this.videosModel.find()
+        return allVideos
+    }
+
+    async findById(id: number){
+        try {
+            const findVideo: VideosSchema[] = await this.videosModel.find({
+                category: id
+            })
+            return findVideo
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 }

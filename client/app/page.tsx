@@ -1,12 +1,42 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Navbar from "@/components/Navbar/Navbar";
+import Videos from "@/components/Videos/Videos";
+import { VideoFormat } from "@/types";
+import axios from "axios";
 
-const inter = Inter({ subsets: ['latin'] })
+async function getVideos() {
+  try {
+    const apiData = await axios.get("http://localhost:3001/videos");
+    return apiData.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-export default function Home() {
+export default async function Home() {
+  const data: VideoFormat[] = await getVideos();
+
+  // Paginado para renderizar solo 50
+  const paginas = Math.ceil(data.length / 50)
+  // const [page, use]
   return (
     <main>
-      <h1>Bienvenido a SpicyTube</h1>
+      <Navbar />
+      {/* <iframe src="https://www.pornhub.com/embed/ph609579b7baf55?autoplay=1" scrolling="no" allowFullScreen></iframe> */}
+      <div className="grid grid-cols-4 mr-2">
+        {data.map((e) => {
+          return (
+            <Videos
+              key={e.id}
+              title={e.title}
+              url={e.url}
+              imgPreview={e.imgPreview}
+              vidPreview={e.vidPreview}
+              duration={e.duration}
+              rating={e.rating}
+            />
+          );
+        })}
+      </div>
     </main>
-  )
+  );
 }

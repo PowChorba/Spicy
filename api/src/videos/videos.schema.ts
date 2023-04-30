@@ -19,7 +19,7 @@ export class Videos {
     duration: string
 
     @Prop({required: true})
-    category: number
+    category: Array<number>
 
     @Prop()
     rating: number
@@ -29,6 +29,9 @@ export class Videos {
 
     @Prop()
     vidPreview: string
+
+    @Prop()
+    actor: Array<string>
 
 }
 

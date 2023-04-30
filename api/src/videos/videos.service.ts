@@ -20,7 +20,8 @@ export class VideosService {
             duration: createOne.duration,
             category: createOne.category,
             imgPreview: createOne.imgPreview,
-            vidPreview: createOne.vidPreview
+            vidPreview: createOne.vidPreview,
+            actor: createOne.actor
         })
 
         return video.save()

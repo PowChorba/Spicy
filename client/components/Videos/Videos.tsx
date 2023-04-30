@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 interface Props {
@@ -13,7 +14,7 @@ export default function Videos({title,imgPreview,vidPreview,duration,rating, url
   return (
     <Link href={url} className="mt-2 mr-2 break-words max-w-xs max-h-xs">
       <div>
-        <img
+        <Image
             src={imgPreview}
             alt="T"
             width='350'

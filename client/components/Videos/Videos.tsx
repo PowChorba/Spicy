@@ -12,7 +12,7 @@ interface Props {
 
 export default function Videos({title,imgPreview,vidPreview,duration,rating, url}: Props) {
   return (
-    <Link href={url} className="mt-2 mr-2 break-words max-w-xs max-h-xs">
+    <Link href='/inicio' className="mt-2 mr-2 break-words max-w-xs max-h-xs">
       <div>
         <Image
             src={imgPreview}
@@ -20,10 +20,10 @@ export default function Videos({title,imgPreview,vidPreview,duration,rating, url
             width='350'
             height='300'
         />
-        <video className="hidden absolute inset-0 w-full h-full object-cover" autoPlay loop muted>
+        {/* <video className="hidden absolute inset-0 w-full h-full object-cover" autoPlay loop muted>
             <source src={vidPreview} type="video/mp4"/>
             <source src={vidPreview} type="video/webm"></source>
-        </video>
+        </video> */}
       </div>
       <h4>{title}</h4>
       <div className="text-right">

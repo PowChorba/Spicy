@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='w-2/3 mx-auto'>{children}</body>
+      <body className='w-3/4 mx-auto'>{children}</body>
     </html>
   )
 }

@@ -11,7 +11,7 @@ interface Props {
 
 export default function Videos({title,imgPreview,vidPreview,duration,rating, url}: Props) {
   return (
-    <Link href={url} className="mt-2 mr-2 break-words max-w-xs">
+    <Link href={url} className="mt-2 mr-2 break-words max-w-xs max-h-xs">
       <div>
         <img
             src={imgPreview}

@@ -9,10 +9,10 @@ export class Videos {
     @Prop({auto: true})
     id: number
 
-    @Prop({required: true})
+    @Prop({required: true, unique: true})
     title: string
 
-    @Prop()
+    @Prop({unique: true})
     url: string
 
     @Prop({required: true})
@@ -24,7 +24,7 @@ export class Videos {
     @Prop()
     rating: number
 
-    @Prop()
+    @Prop({unique: true})
     imgPreview: string
 
     @Prop()

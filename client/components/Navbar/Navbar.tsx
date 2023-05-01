@@ -1,15 +1,30 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import NavbarExt from "./NavbarExt";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
+  const [search, setSearch] = useState('')
+  const router = useRouter()
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    router.push(`/videos?title=${search}`)
+  }
+
   return (
-    <div>
-      <div className="flex justify-evenly py-4 w-2/3 mx-auto">
-      <h1 className="text-3xl">SPICY<span className="text-red-800">TUBE</span></h1>
-        <input type="text" placeholder="Busca tu video preferido..." className="w-1/3 h-8 p-2 rounded-lg border-2"/>
-        <p className="invisible">asd</p>
+    <>
+      <div className="flex justify-evenly items-center py-8 mx-auto">
+        <Link href='/inicio'>
+        <h1 className="text-5xl">Videos<span className="text-[#D63423]">Spicy</span></h1>
+        </Link>
+        <form onSubmit={handleSearch} className="w-2/3 h-8 items-center focus:border-[#D63423]">
+          <input type="text" value={search} placeholder="Busca tu video preferido..." className="px-2 py-2 w-full rounded-lg border-2 border-[#D63423] focus:border-[#D63423]" onChange={(e) => setSearch(e.target.value)}/>
+        </form>
+        {/* <p className="invisible">asd</p> */}
       </div>
         <NavbarExt/>
-    </div>
+    </>
   );
 }

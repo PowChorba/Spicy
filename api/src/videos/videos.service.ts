@@ -43,4 +43,20 @@ export class VideosService {
         }
 
     }
+
+    async findByTitle(title: string){
+        try {
+            if(title){
+                title = title.toLowerCase()
+                let findVideo: VideosSchema[] = await this.videosModel.find()
+                findVideo = findVideo.filter(e => e.title.toLowerCase().includes(title))
+                return findVideo
+            }else{
+                const allVideos = await this.videosModel.find()
+                return allVideos
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

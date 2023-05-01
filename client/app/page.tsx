@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="w-2/3 flex-col justify-center items-center mx-auto my-20 border-2 border-grey-50 rounded-md p-8 shadow-[10px_10px_5px_-3px_rgba(0,0,0,0.22)]">
-      <h2 className="text-5xl py-4 text-center">SPICY<span className="text-red-800">TUBE</span></h2>
+      <h2 className="text-5xl py-4 text-center">SPICY<span className="text-[#D63423]">TUBE</span></h2>
       <div className="py-4 px-2 bg-gray-300 rounded-md text-left">
         <span>
           Este sitio web contiene materiales que pueden ser sensibles para
@@ -24,7 +24,7 @@ export default function Home() {
         </span>
       </div>
       <div className="py-4 text-center">
-      <Link href='/inicio' className="bg-red-800 text-white py-2 px-4 rounded-lg">Soy mayo de 18 años y entiendo los terminos y condiciones.</Link>
+      <Link href='/inicio' className="bg-[#D63423] text-white py-2 px-4 rounded-lg">Soy mayo de 18 años y entiendo los terminos y condiciones.</Link>
       </div>
     </main>
   );

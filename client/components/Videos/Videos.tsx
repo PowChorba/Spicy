@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
+  _id: string
   title: string;
   imgPreview: string;
   vidPreview: string;
@@ -17,10 +18,11 @@ export default function Videos({
   duration,
   rating,
   url,
+  _id
 }: Props) {
   return (
     <Link
-      href={url}
+      href={`/videos/${_id}`}
       className="mt-2 break-words bg-white rounded-lg relative text-ellipsis shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] overflow-hidden"
     >
       <div className="relative">

@@ -4,15 +4,8 @@ import VideoRender from "@/components/RenderVideos/VideosRender";
 import Videos from "@/components/Videos/Videos";
 import { VideoFormat } from "@/types";
 import axios from "axios";
+import { getVideos } from "./services/home.service";
 
-async function getVideos() {
-  try {
-    const apiData = await axios.get("http://localhost:3001/videos");
-    return apiData.data;
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 export default async function Home() {
   const data: VideoFormat[] = await getVideos();

@@ -32,16 +32,21 @@ export class VideosService {
         return allVideos
     }
 
-    async findById(id: number){
+    async findById(id: string){
         try {
-            const findVideo: VideosSchema[] = await this.videosModel.find({
-                category: id
-            })
-            return findVideo
+            if(id.toString().length > 3){
+                const findVideo: VideosSchema[] = await this.videosModel.find({
+                    _id : id
+                })
+                return findVideo
+            }else{
+                let findVideos: VideosSchema[] = await this.videosModel.find()
+                findVideos = findVideos.filter(e => e.category.includes(parseInt(id)))
+                return findVideos
+            }
         } catch (error) {
             console.log(error)
         }
-
     }
 
     async findByTitle(title: string){
@@ -55,6 +60,16 @@ export class VideosService {
                 const allVideos = await this.videosModel.find()
                 return allVideos
             }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async findByCategory(id: number) {
+        try {
+            let findVideos: VideosSchema[] = await this.videosModel.find()
+            findVideos = findVideos.filter(e => e.category.includes(id))
+            return findVideos
         } catch (error) {
             console.log(error)
         }

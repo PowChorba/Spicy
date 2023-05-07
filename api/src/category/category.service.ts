@@ -19,6 +19,14 @@ export class CategoryService {
     }
 
     async findAll(){
-        return this.categoryModel.find()
+        let allCategory: CategoryPost[] = await this.categoryModel.find()
+        allCategory = allCategory?.sort((a: CategoryPost,b: CategoryPost) => {
+            const nameA = a.name.toUpperCase()
+            const nameB = b.name.toUpperCase()
+            if (nameA < nameB) return -1
+            if (nameA > nameB) return 1
+            return 0
+        })
+        return allCategory
     }
 }

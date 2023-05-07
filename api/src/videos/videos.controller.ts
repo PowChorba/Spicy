@@ -11,8 +11,8 @@ export class VideosController {
         return this.videosService.newVideo(createOne)
     }
 
-    @Get(':category')
-    findById(@Param('category', ParseIntPipe) id: number){
+    @Get(':id')
+    findById(@Param('id') id: string){
         return this.videosService.findById(id)
     }
 
@@ -20,4 +20,9 @@ export class VideosController {
     findByTitle(@Query('title') title:string){
         return this.videosService.findByTitle(title)
     }
+
+    // @Get(':category')
+    // findByCategory(@Param('category', ParseIntPipe) id: number){
+    //     return this.videosService.findByCategory(id)
+    // }
 }

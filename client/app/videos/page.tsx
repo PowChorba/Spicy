@@ -27,8 +27,8 @@ export default function SearchVideos() {
   const [state, setState] = useState<VideoFormat[]>([]);
 
   useEffect(() => {
-    const asd = getData();
-    setState(state);
+    getData();
+    // setState(state);
   }, [searchQuery]);
 
   return (
@@ -37,7 +37,6 @@ export default function SearchVideos() {
       <>
         <VideoRender data={state}/>
       </>
-      {/* <Pagination data={data}/> */}
     </main>
   );
 }

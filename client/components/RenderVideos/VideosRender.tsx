@@ -18,11 +18,12 @@ export default function VideoRender({ data }: Props) {
 
   return (
     <>
-    <div className="grid grid-cols-4 gap-2">
+    <div className="grid grid-cols-4 gap-2 mb-4">
       {currentPosts.map((e) => {
           return (
               <Videos
-              key={e.id}
+              key={e._id}
+              _id={e._id}
               title={e.title}
               url={e.url}
               imgPreview={e.imgPreview}

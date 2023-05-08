@@ -2,6 +2,7 @@
 
 import { VideoFormat } from "@/types"
 import { Dispatch, SetStateAction, useState } from "react"
+import {GrNext, GrPrevious} from 'react-icons/gr'
 
 interface Props {
     data: VideoFormat[]
@@ -39,7 +40,7 @@ export default function Pagination({data, setCurrentPage, postsPerPage, currentP
     else{
         return(<div className='mt-2 py-2 rounded-lg text-center bg-[#252525]'>
             {/* Para ir a una pagina atras, de a una */}
-            <button onClick={handlePrev} className={currentPage - 1 !== 0 ? "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]" : 'hidden'}>{"<<"}</button>
+            <button onClick={handlePrev} className={currentPage - 1 !== 0 ? "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]" : 'hidden'}><GrPrevious/></button>
             {/* Para ir a la primer pagina, al menos que ya estes en la primer pagina */}
             <button onClick={() => setCurrentPage(1)} className={currentPage === 1 || currentPage === 2 ? "hidden" : 'p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]'}>1</button>
             {/*  Span para que quede bien visualmente, al menos que estes cerca del final */}
@@ -55,7 +56,7 @@ export default function Pagination({data, setCurrentPage, postsPerPage, currentP
             {/* Para ir a la ultima pagina, al menos que estes en la ultima pagina ya */}
             <button onClick={handleLastPage} className={currentPage === lastPage || currentPage === lastPage - 1 ? 'hidden' : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"}>{lastPage}</button>
             {/* Para adelantar de a una pagina, sin importar donde estes. Al menos que estes en la ultima pagina */}
-            <button onClick={handleNext} className={currentPage + 1 > lastPage ? 'hidden' : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"}>{">>"}</button>
+            <button onClick={handleNext} className={currentPage + 1 > lastPage ? 'hidden' : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"}><GrNext color="white"/></button>
     </div>)
     }
 }

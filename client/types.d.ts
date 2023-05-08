@@ -7,6 +7,7 @@ export type VideoFormat = {
     category: number[]
     imgPreview: string
     vidPreview: string
+    actor: string[]
 }
 
 export interface CategoryFormat {
@@ -14,4 +15,4 @@ export interface CategoryFormat {
     name: string;
     idCategory: number;
     img: string;
-  }
+}

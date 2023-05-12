@@ -18,7 +18,7 @@ export default function VideoRender({ data }: Props) {
 
   return (
     <>
-    <div className="grid grid-cols-4 gap-2 mb-4">
+    <div className="grid grid-cols-4 gap-2 mb-4 max-md:grid-cols-3 max-sm:grid-cols-2 max-sm:gap-1">
       {currentPosts.map((e) => {
           return (
               <Videos

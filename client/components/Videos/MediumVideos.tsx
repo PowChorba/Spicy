@@ -23,7 +23,7 @@ export default function MediumVideos({
   return (
     <Link
       href={`/videos/${_id}`}
-      className="mt-2 break-words bg-white rounded-lg relative text-ellipsis shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] overflow-hidden"
+      className="mt-2 break-words bg-white rounded-lg relative text-ellipsis shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] overflow-hidden max-sm:truncate"
     >
       <div className="relative">
         <Image
@@ -37,7 +37,7 @@ export default function MediumVideos({
           {duration}
         </span>
       </div>
-      <div className="p-2 text-center">
+      <div className="p-2 text-center max-sm:h-14">
         <h4 className="font-bold text-sm">{title}</h4>
       </div>
       <span className="text-xs absolute bottom-2 left-2 text-[#666666]">{rating}%</span>

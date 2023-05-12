@@ -37,7 +37,7 @@ export default function Videos({
           {duration}
         </span>
       </div>
-      <div className="p-4 text-center h-28">
+      <div className="p-4 text-center h-28 max-sm:truncate max-sm:h-14 max-sm:p-2">
         <h4 className="font-bold">{title}</h4>
       </div>
       <span className="text-xs absolute bottom-2 left-2 text-[#666666]">{rating}%</span>

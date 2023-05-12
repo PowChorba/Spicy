@@ -15,12 +15,12 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="flex justify-evenly items-center py-8 mx-auto">
+      <div className="flex justify-evenly items-center py-8 mx-auto max-sm:gap-2 max-sm:py-4">
         <Link href='/inicio'>
-        <h1 className="text-5xl">Videos<span className="text-[#D63423]">Spicy</span></h1>
+        <h1 className="text-5xl max-sm:text-3xl ">Video<span className="text-[#D63423]">Spicy</span></h1>
         </Link>
         <form onSubmit={handleSearch} className="w-2/3 h-8 items-center focus:border-[#D63423]">
-          <input type="text" value={search} placeholder="Busca tu video preferido..." className="px-2 py-2 w-full rounded-lg border-2 border-[#D63423] focus:border-[#D63423]" onChange={(e) => setSearch(e.target.value)}/>
+          <input type="text" value={search} placeholder="Busca tu video preferido..." className="p-2 w-full rounded-lg border-2 border-[#D63423] focus:border-[#D63423] max-sm:p-1" onChange={(e) => setSearch(e.target.value)}/>
         </form>
         {/* <p className="invisible">asd</p> */}
       </div>

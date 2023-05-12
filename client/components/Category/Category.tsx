@@ -24,7 +24,7 @@ export default function CategoryCard({ name, idCategory, img, videos }: Props) {
           height="350"
           className="rounded-tl-lg rounded-tr-lg transition-all ease-in-out hover:scale-110"
         />
-        <span className="text-sm py-2 text-[#F9005F] font-semibold absolute bottom-0 right-0 bg-[#252525] w-full text-center">
+        <span className="text-sm py-2 text-[#F9005F] font-semibold absolute bottom-0 right-0 bg-[#252525] w-full text-center max-sm:py-0">
           {name}{`(${filterVideo?.length})`}
         </span>
       </div>

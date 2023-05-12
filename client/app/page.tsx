@@ -13,14 +13,14 @@ export default function Home() {
     navigate.push('/inicio')
   }
   
-  // useEffect(() => {
-  //   if (mayor === true) {
-  //     navigate.push('/inicio')
-  //   }
-  // }, [mayor])
+  useEffect(() => {
+    if (mayor === true) {
+      navigate.push('/inicio')
+    }
+  }, [mayor])
 
   return (
-    <main className="w-2/3 flex-col justify-center items-center mx-auto my-20 border-2 border-grey-50 rounded-md p-8 shadow-[10px_10px_5px_-3px_rgba(0,0,0,0.22)]">
+    <main className="w-2/3 flex-col justify-center items-center mx-auto my-20 border-2 border-grey-50 rounded-md p-8 shadow-[10px_10px_5px_-3px_rgba(0,0,0,0.22)] max-sm:w-full max-sm:my-0">
       <h2 className="text-5xl py-4 text-center">SPICY<span className="text-[#D63423]">TUBE</span></h2>
       <div className="py-4 px-2 bg-gray-300 rounded-md text-left">
         <span>

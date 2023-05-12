@@ -22,8 +22,8 @@ export default function CategorySmall({ name, idCategory, img, videos, actualId 
           src={img}
           alt={name}
           width="200"
-          height="200"
-          className="rounded-tl-lg rounded-tr-lg transition-all ease-in-out object-cover"
+          height='200'
+          className="rounded-tl-lg rounded-tr-lg transition-all ease-in-out"
         />
         {
           actualId === idCategory.toString()

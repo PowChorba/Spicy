@@ -13,9 +13,9 @@ interface Props {
 
 export default function Pagination({data, setCurrentPage, postsPerPage, currentPage}: Props){
     let pages: number[] = []
-    const lastPage = Math.ceil(data.length / postsPerPage)
+    const lastPage = Math.ceil(data?.length / postsPerPage)
 
-    for(let i = 1; i <= Math.ceil(data.length / postsPerPage); i++){
+    for(let i = 1; i <= Math.ceil(data?.length / postsPerPage); i++){
         pages.push(i)
     }
 
@@ -34,7 +34,7 @@ export default function Pagination({data, setCurrentPage, postsPerPage, currentP
         window.scrollTo(0,0)
     }
 
-    if(data.length < 49){
+    if(data?.length < 49){
         return <div className="hidden">asd</div>
     }
     else{

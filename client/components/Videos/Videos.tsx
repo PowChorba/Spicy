@@ -14,10 +14,8 @@ interface Props {
 export default function Videos({
   title,
   imgPreview,
-  vidPreview,
   duration,
   rating,
-  url,
   _id
 }: Props) {
   return (
@@ -37,10 +35,10 @@ export default function Videos({
           {duration}
         </span>
       </div>
-      <div className="p-4 text-center h-28 max-sm:truncate max-sm:h-14 max-sm:p-2">
+      <div className="py-4 truncate h-20 text-center max-sm:h-14 max-sm:p-2">
         <h4 className="font-bold">{title}</h4>
       </div>
-      <span className="text-xs absolute bottom-2 left-2 text-[#666666]">{rating}%</span>
+      <span className="text-xs absolute bottom-2 left-2 text-[#F9005F] font-bold">{rating}%</span>
     </Link>
   );
 }

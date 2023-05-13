@@ -13,33 +13,31 @@ export default function SearchVideos() {
   const search = useSearchParams();
   const searchQuery = search?.get("title");
 
-  // const getData = async () => {
-  //   try {
-  //     const apiData = await axios.get(
-  //       `http://localhost:3001/videos?title=${searchQuery}`
-  //     );
-  //     setState(apiData.data);
-  //     //   return apiData.data;
-  //   } catch (error) {
-  //     console.log("Error fatal");
-  //   }
-  // };
-
   const [state, setState] = useState<VideoFormat[]>([]);
 
   useEffect(() => {
-    const api = async () =>{
-      const apiData = await getData(searchQuery)
-      setState(apiData)
-    }
-    api()
+    const api = async () => {
+      const apiData = await getData(searchQuery);
+      setState(apiData);
+    };
+    api();
   }, [searchQuery]);
 
+  if (state?.length === 0) {
+    return (
+      <main>
+        <Navbar />
+        <div className="flex justify-center items-center p-20 font-bold text-[#D63423]">
+          No pudimos encontrar ningun video, prueba buscando otro titulo...
+        </div>
+      </main>
+    );
+  }
   return (
     <main>
       <Navbar />
       <>
-        <VideoRender data={state}/>
+        <VideoRender data={state} />
       </>
     </main>
   );

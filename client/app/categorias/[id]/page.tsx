@@ -6,6 +6,7 @@ import CategoryRender from "@/components/Category/CategoryRender";
 export default async function CategoryId() {
   const categories: CategoryFormat[] = await getCategory() 
   const videos: VideoFormat[] = await getVideos()
+  
   return (
     <>
       <Navbar />

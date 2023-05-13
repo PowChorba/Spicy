@@ -12,9 +12,9 @@ export function middleware(request:NextRequest){
         }
     })
 
-    // if(useLocal[0] === true) {
-    //     return NextResponse.redirect(new URL('/inicio', request.url))        
-    // }
+    if(request.nextUrl.pathname.endsWith('/video')) {
+        return NextResponse.redirect(new URL('/inicio', request.url))        
+    }
 
     return response
 }

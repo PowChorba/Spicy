@@ -5,23 +5,24 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Home() {
-  const [mayor, setMayor] = useLocalStorage('edad', false)
   const navigate = useRouter()
+  // const local = window?.localStorage.getItem('edad')
 
-  const handleEdad = () => {
-    setMayor(true)
-    navigate.push('/inicio')
-  }
+  // const handleEdad = () => {
+  //   localStorage.setItem('edad', 'true')
+  //   navigate.push('/inicio')
+  // }
   
-  useEffect(() => {
-    if (mayor === true) {
-      navigate.push('/inicio')
-    }
-  }, [mayor])
+  // useEffect(() => {
+  //   if (local === 'true') {
+  //     navigate.push('/inicio')
+  //   }
+  // }, [local])
 
+  
   return (
     <main className="w-2/3 flex-col justify-center items-center mx-auto my-20 border-2 border-grey-50 rounded-md p-8 shadow-[10px_10px_5px_-3px_rgba(0,0,0,0.22)] max-sm:w-full max-sm:my-0">
-      <h2 className="text-5xl py-4 text-center">SPICY<span className="text-[#D63423]">TUBE</span></h2>
+      <h2 className="text-5xl py-4 text-center">Spicy<span className="text-[#D63423]">X</span></h2>
       <div className="py-4 px-2 bg-gray-300 rounded-md text-left">
         <span>
           Este sitio web contiene materiales que pueden ser sensibles para
@@ -38,7 +39,7 @@ export default function Home() {
         </span>
       </div>
       <div className="py-4 text-center">
-      <button onClick={handleEdad} className="bg-[#D63423] text-white py-2 px-4 rounded-lg">Soy mayo de 18 años y entiendo los terminos y condiciones.</button>
+      {/* <button onClick={handleEdad} className="bg-[#D63423] text-white py-2 px-4 rounded-lg">Soy mayo de 18 años y entiendo los terminos y condiciones.</button> */}
       </div>
     </main>
   );

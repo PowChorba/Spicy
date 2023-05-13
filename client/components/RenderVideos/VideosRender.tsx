@@ -1,5 +1,4 @@
 "use client";
-
 import { VideoFormat } from "@/types";
 import Videos from "../Videos/Videos";
 import Pagination from "../Paginator/Pagination";
@@ -14,12 +13,12 @@ export default function VideoRender({ data }: Props) {
   const [postsPerPage, setPostsPerPage] = useState(48);
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = data.slice(firstPostIndex, lastPostIndex);
+  const currentPosts = data?.slice(firstPostIndex, lastPostIndex);
 
   return (
     <>
-    <div className="grid grid-cols-4 gap-2 mb-4 max-md:grid-cols-3 max-sm:grid-cols-2 max-sm:gap-1">
-      {currentPosts.map((e) => {
+    <div className="grid grid-cols-4 gap-2 mb-4  max-xl:grid-cols-3 max-sm:grid-cols-2 max-sm:gap-1">
+      {currentPosts?.map((e) => {
           return (
               <Videos
               key={e._id}

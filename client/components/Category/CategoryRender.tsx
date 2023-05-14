@@ -5,7 +5,6 @@ import CategorySmall from "./CategorySmall";
 import { useParams } from "next/navigation";
 import VideoRender from "../RenderVideos/VideosRender";
 import {GrNext, GrPrevious} from 'react-icons/gr'
-import Carousel from "../Carousel/Carousel";
 import Link from "next/link";
 
 interface Props {

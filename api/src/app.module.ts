@@ -6,7 +6,15 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CategoryModule } from './category/category.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb+srv://powChorba:monofeo123@spicy.yj3cgur.mongodb.net/test'), VideosModule, CategoryModule],
+  imports: [
+    MongooseModule.forRootAsync({
+      useFactory: () => ({
+        uri: 'mongodb+srv://powChorba:monofeo123@spicy.yj3cgur.mongodb.net/test',
+      }),
+    }),
+    VideosModule,
+    CategoryModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

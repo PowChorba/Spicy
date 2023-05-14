@@ -6,18 +6,18 @@ import { useEffect } from "react";
 
 export default function Home() {
   const navigate = useRouter()
-  // const local = window?.localStorage.getItem('edad')
+   const local = window?.localStorage.getItem('edad')
 
-  // const handleEdad = () => {
-  //   localStorage.setItem('edad', 'true')
-  //   navigate.push('/inicio')
-  // }
+   const handleEdad = () => {
+    localStorage.setItem('edad', 'true')
+     navigate.push('/inicio')
+   }
   
-  // useEffect(() => {
-  //   if (local === 'true') {
-  //     navigate.push('/inicio')
-  //   }
-  // }, [local])
+   useEffect(() => {
+     if (local === 'true') {
+       navigate.push('/inicio')
+     }
+   }, [local])
 
   
   return (
@@ -39,7 +39,7 @@ export default function Home() {
         </span>
       </div>
       <div className="py-4 text-center">
-      {/* <button onClick={handleEdad} className="bg-[#D63423] text-white py-2 px-4 rounded-lg">Soy mayo de 18 años y entiendo los terminos y condiciones.</button> */}
+      <button onClick={handleEdad} className="bg-[#D63423] text-white py-2 px-4 rounded-lg">Soy mayo de 18 años y entiendo los terminos y condiciones.</button>
       </div>
     </main>
   );

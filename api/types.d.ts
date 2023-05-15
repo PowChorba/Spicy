@@ -7,6 +7,8 @@ export type VideosSchema = {
   imgPreview: string;
   vidPreview: string;
   actor: string[];
+  views: string
+  fecha: string
 };
 
 export type CategoryPost = {

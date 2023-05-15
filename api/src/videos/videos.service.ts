@@ -17,22 +17,22 @@ export class VideosService {
             category: createOne.category,
             imgPreview: createOne.imgPreview,
             vidPreview: createOne.vidPreview,
-            actor: createOne.actor
+            actor: createOne.actor,
+            views: createOne.views,
+            fecha: createOne.fecha
         })
 
         return video.save()
     }
 
     async findAll(page: string){
-        console.log('Entra piola aca')
-        const limit = 20
+        const limit = 32
         const skip = (parseInt(page) - 1) * limit
         const allVideos = await this.videosModel.find().skip(skip).limit(limit).exec();
         return allVideos
     }
 
     async findById(id: string){
-        console.log('asd Dos')
         try {
             if(id.toString().length > 3){
                 const findVideo: VideosSchema[] = await this.videosModel.find({

@@ -33,6 +33,12 @@ export class Videos {
     @Prop()
     actor: Array<string>
 
+    @Prop()
+    views: string
+
+    @Prop()
+    fecha: string
+
 }
 
 export const VideosSchema = SchemaFactory.createForClass(Videos)

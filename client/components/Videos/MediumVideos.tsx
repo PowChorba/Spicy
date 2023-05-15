@@ -20,6 +20,14 @@ export default function MediumVideos({
   url,
   _id
 }: Props) {
+
+  if(title.includes('%a%')) title = title.replace('%a%', 'á')
+  if(title.includes('%e%')) title = title.replace('%e%', 'é')
+  if(title.includes('%i%')) title = title.replace('%i%', 'í')
+  if(title.includes('%o%')) title = title.replace('%o%', 'ó')
+  if(title.includes('%u%')) title = title.replace('%u%', 'ú')
+  if(title.includes('%n%')) title = title.replace('%n%', 'ñ')
+
   return (
     <Link
       href={`/videos/${_id}`}

@@ -17,6 +17,7 @@ export default function Home() {
     }
   }, [local])
 
+
   
   return (
     <main className="w-2/3 flex-col justify-center items-center mx-auto my-20 border-2 border-grey-50 rounded-md p-8 shadow-[10px_10px_5px_-3px_rgba(0,0,0,0.22)] max-sm:w-full max-sm:my-0">

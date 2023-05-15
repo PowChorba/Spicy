@@ -1,26 +1,21 @@
-"use client";
 import { VideoFormat } from "@/types";
 import Videos from "../Videos/Videos";
-import Pagination from "../Paginator/Pagination";
-import { useState } from "react";
-
+import Link from "next/link";
 interface Props {
   data: VideoFormat[];
+  params: string;
 }
 
-export default function VideoRender({ data }: Props) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(48);
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = data?.slice(firstPostIndex, lastPostIndex);
+export default function VideoRender({ data, params }: Props) {
+  const nextPage = parseInt(params) + 1;
+  const prevPage = parseInt(params) - 1;
 
   return (
     <>
-    <div className="grid grid-cols-4 gap-2 mb-4  max-xl:grid-cols-3 max-sm:grid-cols-2 max-sm:gap-1">
-      {currentPosts?.map((e) => {
+      <div className="grid grid-cols-4 gap-2 mb-4  max-xl:grid-cols-3 max-sm:grid-cols-2 max-sm:gap-1">
+        {data?.map((e) => {
           return (
-              <Videos
+            <Videos
               key={e._id}
               _id={e._id}
               title={e.title}
@@ -29,16 +24,31 @@ export default function VideoRender({ data }: Props) {
               vidPreview={e.vidPreview}
               duration={e.duration}
               rating={e.rating}
-              />
-              );
-            })}
-    </div>
-      <Pagination
-        data={data}
-        setCurrentPage={setCurrentPage}
-        postsPerPage={postsPerPage}
-        currentPage={currentPage}
-        />
-        </>
+            />
+          );
+        })}
+      </div>
+      <div className="mt-2 py-2 rounded-lg text-center bg-[#252525]">
+        <Link
+          href={`/inicio/${prevPage}`}
+          className={
+            prevPage === 0
+              ? "hidden"
+              : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"
+          }
+        >
+          {prevPage}
+        </Link>
+        <span className="p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md bg-[#D63423]">
+          {params}
+        </span>
+        <Link
+          href={`/inicio/${nextPage}`}
+          className="p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"
+        >
+          {nextPage}
+        </Link>
+      </div>
+    </>
   );
 }

@@ -3,16 +3,12 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Videos } from './videos.schema';
 import { Model } from 'mongoose';
 import { VideosSchema } from 'types';
-// import { encrypt } from './videos.helper';
 
 @Injectable()
 export class VideosService {
     constructor(@InjectModel(Videos.name) private videosModel: Model<Videos>){}
 
     async newVideo(createOne: VideosSchema): Promise<Videos>{
-        // const urlEncrypted = await encrypt(createOne.url)
-        // const imgPreviewEncrypted = await encrypt(createOne.imgPreview)
-        // const vidPreviewEncrypted = await encrypt(createOne.vidPreview)
         const video = await new this.videosModel({
             title: createOne.title,
             url: createOne.url,
@@ -27,22 +23,22 @@ export class VideosService {
         return video.save()
     }
 
-    async findAll(){
-        const allVideos = await this.videosModel.find()
+    async findAll(page: string){
+        console.log('Entra piola aca')
+        const limit = 20
+        const skip = (parseInt(page) - 1) * limit
+        const allVideos = await this.videosModel.find().skip(skip).limit(limit).exec();
         return allVideos
     }
 
     async findById(id: string){
+        console.log('asd Dos')
         try {
             if(id.toString().length > 3){
                 const findVideo: VideosSchema[] = await this.videosModel.find({
                     _id : id
-                })
+                }) 
                 return findVideo
-            }else{
-                let findVideos: VideosSchema[] = await this.videosModel.find()
-                findVideos = findVideos.filter(e => e.category.includes(parseInt(id)))
-                return findVideos
             }
         } catch (error) {
             console.log(error)

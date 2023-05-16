@@ -30,6 +30,7 @@ export default function VideoRenderDos({ data }: Props) {
               vidPreview={e.vidPreview}
               duration={e.duration}
               rating={e.rating}
+              views={e.views}
               />
               );
             })}

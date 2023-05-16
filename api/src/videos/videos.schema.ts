@@ -39,6 +39,9 @@ export class Videos {
     @Prop()
     fecha: string
 
+    @Prop()
+    fuente: string
+
 }
 
 export const VideosSchema = SchemaFactory.createForClass(Videos)

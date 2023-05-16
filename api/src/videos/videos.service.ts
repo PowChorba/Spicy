@@ -19,7 +19,8 @@ export class VideosService {
             vidPreview: createOne.vidPreview,
             actor: createOne.actor,
             views: createOne.views,
-            fecha: createOne.fecha
+            fecha: createOne.fecha,
+            fuente: createOne.fuente
         })
 
         return video.save()

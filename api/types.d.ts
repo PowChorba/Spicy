@@ -9,6 +9,7 @@ export type VideosSchema = {
   actor: string[];
   views: string
   fecha: string
+  fuente: string
 };
 
 export type CategoryPost = {

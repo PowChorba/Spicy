@@ -8,6 +8,9 @@ export type VideoFormat = {
     imgPreview: string
     vidPreview: string
     actor: string[]
+    views: string
+    fecha: string
+    fuente: string
 }
 
 export interface CategoryFormat {

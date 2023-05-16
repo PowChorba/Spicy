@@ -29,6 +29,9 @@ export default async function VideoWatch({ params }: any) {
   relatedVideos = relatedVideos.sort(randomSort);
   relatedVideos = relatedVideos.slice(0, 20);
 
+  renderVideo[0].fecha = renderVideo[0].fecha.replace("%a%", "á");
+  renderVideo[0].fecha = renderVideo[0].fecha.replace("%n%", "ñ");
+
   if (renderVideo[0].title.includes("%a%"))
     renderVideo[0].title = renderVideo[0].title.replace("%a%", "á");
   if (renderVideo[0].title.includes("%e%"))
@@ -60,9 +63,11 @@ export default async function VideoWatch({ params }: any) {
               <AiFillLike />
               {renderVideo[0].rating}%
             </span>
+            <span>{renderVideo[0].views}{' '}<br/></span>
             <span>Fuente del video: </span>
             <span className="font-bold">Porn</span>
             <span className="text-[#ff9000] font-bold">Hub</span>
+            <span><br/>Publicado hace: {renderVideo[0].fecha}</span>
           </div>
           <div className="border-t-2 border-black py-2 items-center">
             <h4>Estrellas:</h4>

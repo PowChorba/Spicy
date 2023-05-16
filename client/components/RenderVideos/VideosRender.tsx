@@ -24,6 +24,7 @@ export default function VideoRender({ data, params }: Props) {
               vidPreview={e.vidPreview}
               duration={e.duration}
               rating={e.rating}
+              views={e.views}
             />
           );
         })}

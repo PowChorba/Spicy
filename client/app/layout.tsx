@@ -19,6 +19,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="eroads_" content="46bd80d9c034628fd6a8828de293bd9d" />
+        <script type="text/javascript" src="https://js.juicyads.com/jp.php?c=34d433u2q224u4q2w2f4x25434&u=http%3A%2F%2Fwww.juicyads.rocks"></script>
+        <script type="text/javascript" data-id="juicyads-native-ads" data-ad-zone="1022274" data-targets="a" src="https://js.juicyads.com/juicyads.native-ads.min.js"></script>
       </head>
       <body className='w-3/4 mx-auto bg-gray-200 max-sm:w-full'>{children}</body>
     </html>

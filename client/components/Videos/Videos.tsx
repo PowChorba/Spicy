@@ -44,11 +44,11 @@ export default function Videos({
           {duration}
         </span>
       </div>
-      <div className="py-4 h-28 text-center max-sm:h-14 max-sm:p-2">
+      <div className="py-4 h-28 text-center max-sm:h-14 max-sm:p-2 max-lg:truncate">
         <h4 className="font-bold text-sm">{title}</h4>
       </div>
       <span className="text-xs absolute bottom-2 left-2 text-[#8faf20] font-bold"> {rating}%</span>
-      <span className="text-xs absolute bottom-2 left-10 text-[#F9005F] font-bold">{views}</span>
+      <span className="text-xs absolute bottom-2 left-12 text-[#F9005F] font-bold">{views}</span>
     </Link>
   );
 }

@@ -29,8 +29,15 @@ export class VideosService {
     async findAll(page: string){
         const limit = 32
         const skip = (parseInt(page) - 1) * limit
-        const allVideos = await this.videosModel.find().skip(skip).limit(limit).exec();
-        return allVideos
+        let allVideos = await this.videosModel.find().exec();
+        // let allVideos = await this.videosModel.find().skip(skip).limit(limit).exec();
+        allVideos = allVideos.sort((a,b) => {
+            if(a.rating > b.rating) return -1
+            if(a.rating < b.rating) return 1
+            return 0
+        })
+        const slicedVideos = allVideos.slice(skip, skip + limit);
+        return slicedVideos;
     }
 
     async findById(id: string){
@@ -54,7 +61,12 @@ export class VideosService {
                 findVideo = findVideo.filter(e => e.title.toLowerCase().includes(title))
                 return findVideo
             }else{
-                const allVideos = await this.videosModel.find()
+                let allVideos = await this.videosModel.find()
+                allVideos = allVideos.sort((a,b) => {
+                    if(a.rating > b.rating) return -1
+                    if(a.rating < b.rating) return 1
+                    return 0
+                })
                 return allVideos
             }
         } catch (error) {

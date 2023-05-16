@@ -7,7 +7,7 @@ import { randomSort } from "../videos/[id]/utils/videos.helper";
 
 export default async function Home() {
   let data: VideoFormat[] = await getVideosPage('1');
-  data = data?.sort(randomSort)
+  // data = data?.sort(randomSort)
 
   return (
     <main>

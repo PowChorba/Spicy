@@ -55,43 +55,40 @@ export class VideosService {
 
   async findByTitle(title: string) {
     try {
-        if(title){
-            const titleUpper = title?.toLowerCase();
-            if (
-                titleUpper.includes('menor') ||
-                titleUpper.includes('infantil') ||
-                titleUpper.includes('menores') ||
-                titleUpper.includes('niño') ||
-                titleUpper.includes('niña') ||
-                titleUpper.includes('niñas') ||
-                titleUpper.includes('niños')
-                ) {
-                    return [
-                        {
-                            title:
-                            'Esta prohibido la busqueda y difunsion de videos relacionados a menores de edad. Porfavor no vuelvas a introduccir algo relacionado.',
-                        },
-                    ];
-                }
-                else {
-                  if (title) {
-                    title = title.toLowerCase();
-                    let findVideo: VideosSchema[] = await this.videosModel.find();
-                    findVideo = findVideo.filter((e) =>
-                    e.title.toLowerCase().includes(title),
-                    );
-                    return findVideo;
-                  } else {
-                    let allVideos = await this.videosModel.find();
-                    allVideos = allVideos.sort((a, b) => {
-                      if (a.views > b.views) return -1;
-                      if (a.views < b.views) return 1;
-                      return 0;
-                    });
-                    return allVideos;
-                  }
-                }
-              }
+      if (typeof title !== 'undefined') {
+        const titleUpper = title?.toLowerCase();
+        if (
+          titleUpper.includes('menor') ||
+          titleUpper.includes('infantil') ||
+          titleUpper.includes('menores') ||
+          titleUpper.includes('niño') ||
+          titleUpper.includes('niña') ||
+          titleUpper.includes('niñas') ||
+          titleUpper.includes('niños')
+        ) {
+          return [
+            {
+              title:
+                'Esta prohibido la busqueda y difunsion de videos relacionados a menores de edad. Porfavor no vuelvas a introduccir algo relacionado.',
+            },
+          ];
+        } else {
+          title = title.toLowerCase();
+          let findVideo: VideosSchema[] = await this.videosModel.find();
+          findVideo = findVideo.filter((e) =>
+            e.title.toLowerCase().includes(title),
+          );
+          return findVideo;
+        }
+      } else {
+        let allVideos = await this.videosModel.find();
+        allVideos = allVideos.sort((a, b) => {
+          if (a.views > b.views) return -1;
+          if (a.views < b.views) return 1;
+          return 0;
+        });
+        return allVideos;
+      }
     } catch (error) {
       console.log(error);
     }

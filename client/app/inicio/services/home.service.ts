@@ -17,3 +17,12 @@ export async function getVideosPage(page:string) {
       console.log(error);
     }
   }  
+
+export async function getSearch(){
+  try{
+    const apiData = await axios.get('http://localhost:3001/search')
+    return apiData.data
+  }catch(error){
+    console.log(error)
+  }
+}  

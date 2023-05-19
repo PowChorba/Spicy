@@ -19,3 +19,9 @@ export interface CategoryFormat {
     idCategory: number;
     img: string;
 }
+
+export interface SearchFormat {
+    _id: string
+    word: string
+    counter: number
+}

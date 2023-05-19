@@ -3,13 +3,15 @@ import React, { useState } from "react";
 import NavbarExt from "./NavbarExt";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import axios from "axios";
 
 export default function Navbar() {
   const [search, setSearch] = useState('')
   const router = useRouter()
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
+    await axios.post('http://localhost:3001/search', {word:search})
     router.push(`/videos?title=${search}`)
   }
 

@@ -17,3 +17,8 @@ export type CategoryPost = {
   idCategory: number;
   img: string;
 };
+
+export type SearchModel = {
+  word: string
+  counter?: number
+}

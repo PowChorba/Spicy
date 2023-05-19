@@ -12,11 +12,13 @@ export default function NavbarExt() {
   const handleCategories = () => {
     setCategorias(!categorias)
   }
-  console.log(path)
+
+
 
   return (
     <div className="flex justify-around items-center bg-[#252525] text-white rounded-lg">
           <Link href="/inicio" className={path.includes('/inicio') ? "px-10 bg-[#D63423] py-2 rounded-md w-1/4 text-center max-xl:px-2 max-sm:px-1 max-sm:py-1 max-sm:text-xs" : "px-10 bg-[#252525] py-2 rounded-md w-1/4 text-center max-sm:px-1 max-sm:py-1 max-sm:text-xs"}>Inicio</Link>
+          {/* <button onClick={handleInicio} className={path.includes('/inicio') ? "px-10 bg-[#D63423] py-2 rounded-md w-1/4 text-center max-xl:px-2 max-sm:px-1 max-sm:py-1 max-sm:text-xs max-2xl:hidden" : "px-10 bg-[#252525] py-2 rounded-md w-1/4 text-center max-xl:px-2 max-sm:px-1 max-sm:py-1 max-sm:text-xs max-2xl:hidden"}>Inicio</button> */}
           {
             path.includes('/categorias') 
             ? <Link href="/categorias" className={path.includes('/categorias') ? "px-10 bg-[#D63423] py-2 rounded-md w-1/4 text-center max-xl:px-2 max-sm:px-1 max-sm:py-1 max-sm:text-xs max-2xl:hidden" : "px-10 bg-[#252525] py-2 rounded-md w-1/4 text-center max-xl:px-2 max-sm:px-1 max-sm:py-1 max-sm:text-xs max-2xl:hidden"}>Categorias</Link>

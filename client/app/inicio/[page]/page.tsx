@@ -7,7 +7,7 @@ import { getVideos, getVideosPage } from "../services/home.service";
 
 export default async function HomeDos({params}: any) {
   let data: VideoFormat[] = await getVideosPage(params.page);
-  // data = data?.sort(randomSort)
+
 
   return (
     <main>

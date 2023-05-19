@@ -29,8 +29,8 @@ export default function CategoryRender({data, videos}: Props){
         setCatRender(dataDos)
     }
 
-    const renderVideos = videos.filter(e => e.category.includes(parseInt(id)))
-    const actualData = data.filter(e => e.idCategory === parseInt(id))
+    const renderVideos = videos.filter(e => e.category?.includes(parseInt(id)))
+    const actualData = data?.filter(e => e.idCategory === parseInt(id))
 
     return(
         <>
@@ -39,7 +39,7 @@ export default function CategoryRender({data, videos}: Props){
         <button onClick={handlePrev} className={catRender[0].name !== dataUno[0].name ? "p-2  text-lg rounded-md " : 'invisible'}><GrPrevious/></button>
         {/* <button onClick={() => setCurrentPage(currentPage - 1)} className={currentPage - 1 !== 0 ? "p-2  text-lg rounded-md " : 'invisible'}>{"<"}</button> */}
             {
-                catRender.map(e => {
+                catRender?.map(e => {
                     return <CategorySmall key={e._id} name={e.name} idCategory={e.idCategory} img={e.img} videos={videos} actualId={id}/>
                 })
             }

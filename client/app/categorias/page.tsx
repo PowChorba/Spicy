@@ -7,6 +7,7 @@ import CategoryCard from "@/components/Category/Category";
 export default async function Category({params}: any){
     const categorys:CategoryFormat[] = await getCategory()
     const videos: VideoFormat[] = await getVideos()
+    
     return(
     <main>
       <Navbar />

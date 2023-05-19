@@ -55,22 +55,24 @@ export class VideosService {
 
   async findByTitle(title: string) {
     try {
-      const titleUpper = title.toLowerCase();
-      if (
-        titleUpper.includes('menor') ||
-        titleUpper.includes('infantil') ||
-        titleUpper.includes('menores') ||
-        titleUpper.includes('niño') ||
-        titleUpper.includes('niña') ||
-        titleUpper.includes('niñas') ||
-        titleUpper.includes('niños')
-      ) {
-        return [
-          {
-            title:
-              'Esta prohibido la busqueda y difunsion de videos relacionados a menores de edad. Porfavor no vuelvas a introduccir algo relacionado.',
-          },
-        ];
+        if(title){
+            const titleUpper = title?.toLowerCase();
+            if (
+                titleUpper.includes('menor') ||
+                titleUpper.includes('infantil') ||
+                titleUpper.includes('menores') ||
+                titleUpper.includes('niño') ||
+                titleUpper.includes('niña') ||
+                titleUpper.includes('niñas') ||
+                titleUpper.includes('niños')
+                ) {
+                    return [
+                        {
+                            title:
+                            'Esta prohibido la busqueda y difunsion de videos relacionados a menores de edad. Porfavor no vuelvas a introduccir algo relacionado.',
+                        },
+                    ];
+                }
       } else {
         if (title) {
           title = title.toLowerCase();

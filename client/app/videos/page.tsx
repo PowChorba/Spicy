@@ -38,6 +38,18 @@ export default function SearchVideos({ param }: any) {
       </main>
     );
   }
+  else if(state[0]?.title.includes('Esta prohibido la busqueda y difunsion de videos relacionados a menores de edad. Porfavor no vuelvas a introduccir algo relacionado.')){
+    return(
+      <main>
+      <Navbar/>
+      <div className="flex justify-center text-center items-center p-20 font-bold text-[#D63423]">
+          {
+            state[0]?.title
+          }
+        </div>
+    </main>
+    )
+  }
 
   return (
     <main>

@@ -11,7 +11,10 @@ export default function Navbar() {
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
-    await axios.post('http://localhost:3001/search', {word:search})
+    const palabras = search.split(' ')
+    for(let i = 0; i < palabras.length; i++ ){
+      await axios.post('http://localhost:3001/search', {word:palabras[i]})
+    }
     router.push(`/videos?title=${search}`)
   }
 
@@ -24,7 +27,6 @@ export default function Navbar() {
         <form onSubmit={handleSearch} className="w-2/3 h-8 items-center focus:border-[#D63423]">
           <input type="text" value={search} placeholder="Busca tu video preferido..." className="p-2 w-full rounded-lg border-2 border-[#D63423] focus:border-[#D63423] max-sm:p-1" onChange={(e) => setSearch(e.target.value)}/>
         </form>
-        {/* <p className="invisible">asd</p> */}
       </div>
         <NavbarExt/>
     </>

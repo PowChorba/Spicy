@@ -38,7 +38,7 @@ export default function SearchVideos({ param }: any) {
       </main>
     );
   }
-  else if(state[0]?.title.includes('Esta prohibido la busqueda y difunsion de videos relacionados a menores de edad. Porfavor no vuelvas a introduccir algo relacionado.')){
+  else if(state[0]?.title?.includes('Esta prohibido la busqueda y difunsion de videos relacionados a menores de edad. Porfavor no vuelvas a introduccir algo relacionado.')){
     return(
       <main>
       <Navbar/>

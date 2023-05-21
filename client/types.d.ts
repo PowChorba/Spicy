@@ -25,3 +25,10 @@ export interface SearchFormat {
     word: string
     counter: number
 }
+
+export interface PornstarFormat {
+    _id: string
+    name: string
+    img: string
+    videos: number
+}

@@ -5,6 +5,7 @@ import { VideosModule } from './videos/videos.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CategoryModule } from './category/category.module';
 import { SearchModule } from './search/search.module';
+import { PornstarModule } from './pornstar/pornstar.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { SearchModule } from './search/search.module';
     VideosModule,
     CategoryModule,
     SearchModule,
+    PornstarModule,
   ],
   controllers: [AppController],
   providers: [AppService],

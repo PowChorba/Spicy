@@ -2,7 +2,7 @@ export type VideosSchema = {
   title: string;
   url: string;
   duration: string;
-  category: number[];
+  category: number[]
   rating: string;
   imgPreview: string;
   vidPreview: string;
@@ -21,4 +21,9 @@ export type CategoryPost = {
 export type SearchModel = {
   word: string
   counter?: number
+}
+
+export type PornstarPost = {
+  name: string
+  img : string 
 }

@@ -44,7 +44,7 @@ export class SearchService {
       if (a.counter < b.counter) return 1;
       return 0;
     });
-    findAll = findAll.splice(0, 10);
+    findAll = findAll.splice(0, 5);
     return findAll;
   }
 }

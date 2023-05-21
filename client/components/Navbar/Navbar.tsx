@@ -12,9 +12,7 @@ export default function Navbar() {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
     const palabras = search.split(' ')
-    for(let i = 0; i < palabras.length; i++ ){
-      await axios.post('http://localhost:3001/search', {word:palabras[i]})
-    }
+    await palabras.map(e => axios.post('http://localhost:3001/search', {word:e}))
     router.push(`/videos?title=${search}`)
   }
 

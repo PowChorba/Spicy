@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getData = async (searchQuery: string | null) => {
+export const getData = async (searchQuery: string | undefined) => {
     try {
       const apiData = await axios.get(
         `http://localhost:3001/videos?title=${searchQuery}`

@@ -14,7 +14,7 @@ export default function Trending({ word }: Props) {
     <Link
       onClick={handleClic}
       href={`/videos?title=${word}`}
-      className="px-4 bg-[#D63423] text-white text-sm rounded-lg min-w-[7%] max-w-[7%] text-center overflow-hidden"
+      className="px-2 bg-[#D63423] text-white text-sm rounded-lg min-w-[15%] max-w-[15%] text-center overflow-hidden"
     >
       {word}
     </Link>

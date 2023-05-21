@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Videos } from './videos.schema';
 import { Model } from 'mongoose';
 import { VideosSchema } from 'types';
+// import { categoryName } from './helper/videos.helper';
 
 @Injectable()
 export class VideosService {
@@ -75,9 +76,11 @@ export class VideosService {
         } else {
           title = title.toLowerCase();
           let findVideo: VideosSchema[] = await this.videosModel.find();
-          findVideo = findVideo.filter((e) =>
-            e.title.toLowerCase().includes(title),
-          );
+          // const asd = findVideo.map(e => categoryName(e.category))
+          // for(let i =0; i < findVideo.length; i++){
+          //   findVideo[i].category = asd[i]
+          // }e.title.toLowerCase().includes(title) ||
+          findVideo = findVideo.filter((e) => e.title.toLowerCase().includes(title));
           return findVideo;
         }
       } else {

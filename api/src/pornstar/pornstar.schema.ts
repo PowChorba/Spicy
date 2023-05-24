@@ -14,6 +14,24 @@ export class Pornstar {
 
     @Prop()
     videos: number
+
+    @Prop()
+    relation: string
+
+    @Prop()
+    city: string
+
+    @Prop()
+    carrer: string
+    
+    @Prop()
+    sex: string
+
+    @Prop()
+    horoscope: string
+    
+    @Prop()
+    etnia: string
 }
 
 export const PornstarSchema = SchemaFactory.createForClass(Pornstar)

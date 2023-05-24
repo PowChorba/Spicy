@@ -13,7 +13,13 @@ export class PornstarService {
     async createPornstar(data: PornstarPost){
         const pornstar = new this.pornstarModel({
             name: data.name,
-            img: data.img
+            img: data.img,
+            relation: data.relation,
+            city: data.city,
+            carrer: data.carrer,
+            sex: data.sex,
+            horoscope: data.horoscope,
+            etnia: data.etnia
         });
         return pornstar.save()
     }

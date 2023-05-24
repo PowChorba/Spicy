@@ -17,9 +17,9 @@ export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.endsWith("/video")) {
     return NextResponse.redirect(new URL("/inicio", request.url));
   }
-  if (request.nextUrl.pathname.includes("/actores/")) {
-    return NextResponse.redirect(new URL("/actores", request.url));
-  }
+  // if (request.nextUrl.pathname.includes("/actores/")) {
+  //   return NextResponse.redirect(new URL("/actores", request.url));
+  // }
 
   if (request.nextUrl.pathname.endsWith("/") && nextCookies?.value === "true") {
     return NextResponse.redirect(new URL("/inicio", request.url));

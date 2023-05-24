@@ -26,4 +26,11 @@ export type SearchModel = {
 export type PornstarPost = {
   name: string
   img : string 
+  videos: number
+  relation: string
+  city: string
+  carrer: string
+  sex: string
+  horoscope: string
+  etnia: string
 }

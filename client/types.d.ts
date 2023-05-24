@@ -1,34 +1,40 @@
 export type VideoFormat = {
-    _id: string
-    title: string
-    url: string
-    duration: string
-    rating: number
-    category: number[]
-    imgPreview: string
-    vidPreview: string
-    actor: string[]
-    views: string
-    fecha: string
-    fuente: string
-}
+  _id: string;
+  title: string;
+  url: string;
+  duration: string;
+  rating: number;
+  category: number[];
+  imgPreview: string;
+  vidPreview: string;
+  actor: string[];
+  views: string;
+  fecha: string;
+  fuente: string;
+};
 
 export interface CategoryFormat {
-    _id: string;
-    name: string;
-    idCategory: number;
-    img: string;
+  _id: string;
+  name: string;
+  idCategory: number;
+  img: string;
 }
 
 export interface SearchFormat {
-    _id: string
-    word: string
-    counter: number
+  _id: string;
+  word: string;
+  counter: number;
 }
 
 export interface PornstarFormat {
-    _id: string
-    name: string
-    img: string
-    videos: number
+  _id: string;
+  name: string;
+  img: string;
+  relation: string;
+  city: string;
+  carrer: string;
+  sex: string;
+  horoscope: string;
+  etnia: string;
+  videos: number
 }

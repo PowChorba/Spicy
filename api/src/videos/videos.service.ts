@@ -33,8 +33,8 @@ export class VideosService {
     let allVideos = await this.videosModel.find().exec();
     // let allVideos = await this.videosModel.find().skip(skip).limit(limit).exec();
     allVideos = allVideos.sort((a, b) => {
-      if (a.views > b.views) return -1;
-      if (a.views < b.views) return 1;
+      if (a.views.includes('M') > b.views.includes('M')) return -1;
+      if (a.views.includes('M') < b.views.includes('M')) return 1;
       return 0;
     });
     const slicedVideos = allVideos.slice(skip, skip + limit);

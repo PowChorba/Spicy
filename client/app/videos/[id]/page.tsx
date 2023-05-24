@@ -33,17 +33,17 @@ export default async function VideoWatch({ params }: any) {
   renderVideo[0].fecha = renderVideo[0].fecha.replace("%n%", "ñ");
 
   if (renderVideo[0].title.includes("%a%"))
-    renderVideo[0].title = renderVideo[0].title.replace("%a%", "á");
+    renderVideo[0].title = renderVideo[0].title.replace(/%a%/g, "á");
   if (renderVideo[0].title.includes("%e%"))
-    renderVideo[0].title = renderVideo[0].title.replace("%e%", "é");
+    renderVideo[0].title = renderVideo[0].title.replace(/%e%/g, "é");
   if (renderVideo[0].title.includes("%i%"))
-    renderVideo[0].title = renderVideo[0].title.replace("%i%", "í");
+    renderVideo[0].title = renderVideo[0].title.replace(/%i%/g, "í");
   if (renderVideo[0].title.includes("%o%"))
-    renderVideo[0].title = renderVideo[0].title.replace("%o%", "ó");
+    renderVideo[0].title = renderVideo[0].title.replace(/%o%/g, "ó");
   if (renderVideo[0].title.includes("%u%"))
-    renderVideo[0].title = renderVideo[0].title.replace("%u%", "ú");
+    renderVideo[0].title = renderVideo[0].title.replace(/%u%/g, "ú");
   if (renderVideo[0].title.includes("%n%"))
-    renderVideo[0].title = renderVideo[0].title.replace("%n%", "ñ");
+    renderVideo[0].title = renderVideo[0].title.replace(/%n%/g, "ñ");
 
   return (
     <>
@@ -77,7 +77,7 @@ export default async function VideoWatch({ params }: any) {
               renderVideo[0].actor?.map((actor: string) => {
                 return (
                   <Link
-                    href={`/actores/actor`}
+                    href={`/actores/${actor.replace(' ', '-')}`}
                     key={actor}
                     className="text-[#D63423] font-bold"
                   >

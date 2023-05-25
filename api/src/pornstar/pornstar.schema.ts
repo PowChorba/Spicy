@@ -6,7 +6,7 @@ export type PornstarDocument = HydratedDocument<Pornstar>
 @Schema()
 export class Pornstar {
 
-    @Prop({required: true})
+    @Prop({required: true, unique: true})
     name: string
 
     @Prop({required: true})

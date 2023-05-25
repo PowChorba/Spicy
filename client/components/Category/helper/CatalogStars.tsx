@@ -28,6 +28,10 @@ export default function CatalogStars(){
                 <Link href='/categorias/5' className="text-sm py-1">Brasileras</Link>
                 <br />
                 <Link href='/categorias/12' className="text-sm py-1">Morenas</Link>
+                <br />
+                <Link href='/categorias/23' className="text-sm py-1">Francesas</Link>
+                <br />
+                <Link href='/categorias/24' className="text-sm py-1">Rusas</Link>
             </ul>
         </div> 
     </>)

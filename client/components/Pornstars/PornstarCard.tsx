@@ -12,11 +12,11 @@ interface Props {
 export default function PornstarCard({name, img, _id, index, videos}:Props){
     const nameModify = name.replace(' ', '-')
     return(
-    <Link href={`/actores/${nameModify}`} className="bg-[#252525] rounded-lg text-center">
+    <Link href={`/actores/${nameModify}`} className="bg-[#252525] rounded-lg text-center shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)]">
         <Image
           src={img}
           alt="T"
-          width="300"
+          width="250"
           height="350"
           className="rounded-tl-lg rounded-tr-lg"
         />

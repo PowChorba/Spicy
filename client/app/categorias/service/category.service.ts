@@ -1,8 +1,18 @@
+import { CategoryCounter } from "@/types";
 import axios from "axios";
 
 export async function getCategory(){
     try {
-        const apiData = await axios.get('http://localhost:3001/category')
+        const apiData = await axios.get(`http://localhost:3001/category`)
+        return apiData.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function getCategoryId(id: number){
+    try {
+        const apiData = await axios.get(`http://localhost:3001/category/${id}`)
         return apiData.data
     } catch (error) {
         console.log(error)

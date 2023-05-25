@@ -18,6 +18,12 @@ export interface CategoryFormat {
   name: string;
   idCategory: number;
   img: string;
+  counter: number
+}
+
+export interface CategoryCounter { 
+  id: string
+  counter: number
 }
 
 export interface SearchFormat {

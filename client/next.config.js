@@ -10,6 +10,9 @@ const nextConfig = {
       },
       {
         hostname: "ei.phncdn.com"
+      },
+      {
+        hostname: "fi1.ypncdn.com"
       }
     ]
   }

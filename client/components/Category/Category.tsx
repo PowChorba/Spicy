@@ -22,6 +22,7 @@ export default function CategoryCard({ name, idCategory, img, videos }: Props) {
           alt="T"
           width="250"
           height="350"
+          className="max-h-[250px] max-w-[250px]"
         />
         <span className="text-sm text-center py-20 text-white font-bold absolute bottom-0 left-0 h-full w-full bg-[#0000003f] max-xl:py-0">
           {name}<br/>{`(${filterVideo?.length}) videos`}

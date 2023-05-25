@@ -42,13 +42,20 @@ export class VideosService {
   }
 
   async findById(id: string) {
+    console.log('Esta haciendo peticion cuando no tiene que hacer')
     try {
-      if (id.toString().length > 3) {
-        const findVideo: VideosSchema[] = await this.videosModel.find({
+        const findVideo = await this.videosModel.findOne({
           _id: id,
         });
-        return findVideo;
-      }
+        if(findVideo.counter) {
+          findVideo.counter = findVideo.counter + 1
+          return findVideo.save()
+
+        }
+        else {
+          findVideo.counter = 1
+          return findVideo.save()
+        }
     } catch (error) {
       console.log(error);
     }
@@ -81,13 +88,18 @@ export class VideosService {
           //   findVideo[i].category = asd[i]
           // }e.title.toLowerCase().includes(title) ||
           findVideo = findVideo.filter((e) => e.title.toLowerCase().includes(title));
+          findVideo = findVideo.sort((a, b) => {
+            if (a.views.includes('M') > b.views.includes('M')) return -1;
+            if (a.views.includes('M') < b.views.includes('M')) return 1;
+            return 0;
+          });
           return findVideo;
         }
       } else {
         let allVideos = await this.videosModel.find();
         allVideos = allVideos.sort((a, b) => {
-          if (a.views > b.views) return -1;
-          if (a.views < b.views) return 1;
+          if (a.views.includes('M') > b.views.includes('M')) return -1;
+          if (a.views.includes('M') < b.views.includes('M')) return 1;
           return 0;
         });
         return allVideos;

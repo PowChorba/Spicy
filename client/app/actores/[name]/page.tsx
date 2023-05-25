@@ -11,7 +11,7 @@ export default async function InvididualActor({ params }: any) {
   const actor = actorData[0][0];
   const videos: VideoFormat[] = actorData[1];
   const videosLength = videos?.length;
-  console.log(actorData);
+
 
   return (
     <main>
@@ -23,7 +23,7 @@ export default async function InvididualActor({ params }: any) {
         </div>
       ) : (
         <>
-          <div className="flex gap-10 items-center justify-evenly my-4 bg-[#252525] p-2 rounded-lg">
+          <div className="flex gap-10 max-sm:gap-2 items-center justify-evenly my-4 max-sm:my-2 bg-[#252525] p-2 rounded-lg">
             <PornstartCardDos data={actor} videosLength={videosLength} />
           </div>
           <p className="font-bold">Videos de la estrella:</p>

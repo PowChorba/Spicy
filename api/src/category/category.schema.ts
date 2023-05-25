@@ -16,6 +16,9 @@ export class Category {
 
     @Prop({required: true})
     img: string
+
+    @Prop()
+    counter: number
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category)

@@ -10,13 +10,20 @@ export type VideosSchema = {
   views: string
   fecha: string
   fuente: string
+  counter: number
 };
 
 export type CategoryPost = {
   name: string;
   idCategory: number;
   img: string;
+  counter?: number
 };
+
+export type CounterCategory = {
+  id: number
+  counter: number
+}
 
 export type SearchModel = {
   word: string

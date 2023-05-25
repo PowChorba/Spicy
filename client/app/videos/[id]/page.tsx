@@ -9,7 +9,7 @@ import { AiFillLike } from "react-icons/ai";
 import MediumVideos from "@/components/Videos/MediumVideos";
 
 export default async function VideoWatch({ params }: any) {
-  const renderVideo: VideoFormat[] = await getVideo(params.id);
+  const renderVideo: VideoFormat = await getVideo(params.id);
   const allVideos: VideoFormat[] = await getAllVideos();
   const category: CategoryFormat[] = await getCategory();
   // Para mostrar los videos del aside
@@ -17,33 +17,33 @@ export default async function VideoWatch({ params }: any) {
   const videosFilter = allVideos.slice(randomNumber, randomNumber + 5);
   // Para mostrar las categorias y poder ir hacia cada una de ellas
   const categoryFilter = category.filter((e) =>
-    renderVideo[0].category.includes(e.idCategory)
+    renderVideo.category.includes(e.idCategory)
   );
   // Para mostrar los videos abajo de los datos
   let relatedVideos = allVideos.filter((e) =>
     e.category.includes(
-      renderVideo[0].category[1] || renderVideo[0].category[0]
+      renderVideo.category[1] || renderVideo.category[0]
     )
   );
-  relatedVideos = relatedVideos.filter((e) => e.title !== renderVideo[0].title);
+  relatedVideos = relatedVideos.filter((e) => e.title !== renderVideo.title);
   relatedVideos = relatedVideos.sort(randomSort);
   relatedVideos = relatedVideos.slice(0, 20);
 
-  renderVideo[0].fecha = renderVideo[0].fecha.replace("%a%", "á");
-  renderVideo[0].fecha = renderVideo[0].fecha.replace("%n%", "ñ");
+  renderVideo.fecha = renderVideo.fecha.replace("%a%", "á");
+  renderVideo.fecha = renderVideo.fecha.replace("%n%", "ñ");
 
-  if (renderVideo[0].title.includes("%a%"))
-    renderVideo[0].title = renderVideo[0].title.replace(/%a%/g, "á");
-  if (renderVideo[0].title.includes("%e%"))
-    renderVideo[0].title = renderVideo[0].title.replace(/%e%/g, "é");
-  if (renderVideo[0].title.includes("%i%"))
-    renderVideo[0].title = renderVideo[0].title.replace(/%i%/g, "í");
-  if (renderVideo[0].title.includes("%o%"))
-    renderVideo[0].title = renderVideo[0].title.replace(/%o%/g, "ó");
-  if (renderVideo[0].title.includes("%u%"))
-    renderVideo[0].title = renderVideo[0].title.replace(/%u%/g, "ú");
-  if (renderVideo[0].title.includes("%n%"))
-    renderVideo[0].title = renderVideo[0].title.replace(/%n%/g, "ñ");
+  if (renderVideo.title.includes("%a%"))
+    renderVideo.title = renderVideo.title.replace(/%a%/g, "á");
+  if (renderVideo.title.includes("%e%"))
+    renderVideo.title = renderVideo.title.replace(/%e%/g, "é");
+  if (renderVideo.title.includes("%i%"))
+    renderVideo.title = renderVideo.title.replace(/%i%/g, "í");
+  if (renderVideo.title.includes("%o%"))
+    renderVideo.title = renderVideo.title.replace(/%o%/g, "ó");
+  if (renderVideo.title.includes("%u%"))
+    renderVideo.title = renderVideo.title.replace(/%u%/g, "ú");
+  if (renderVideo.title.includes("%n%"))
+    renderVideo.title = renderVideo.title.replace(/%n%/g, "ñ");
 
   return (
     <>
@@ -51,30 +51,30 @@ export default async function VideoWatch({ params }: any) {
       <div className="flex">
         <article className="w-5/6 py-2 max-xl:w-full max-sm:px-1">
           <iframe
-            src={renderVideo[0].url}
+            src={renderVideo.url}
             allowFullScreen
             className="w-full h-[600px] border-black border-2 rounded-lg max-xl:h-[350px] max-sm:h-[350px]  overflow-hidden"
           ></iframe>
           <div className="py-2">
             <h3 className="font-semibold text-2xl max-xl:text-lg">
-              {renderVideo[0].title}
+              {renderVideo.title}
             </h3>
             <span className="flex gap-1 items-center">
               <AiFillLike />
-              {renderVideo[0].rating}%
+              {renderVideo.rating}%
             </span>
-            <span>{renderVideo[0].views}{' '}<br/></span>
+            <span>{renderVideo.views}{' '}<br/></span>
             <span>Fuente del video: </span>
             <span className="font-bold">Porn</span>
             <span className="text-[#ff9000] font-bold">Hub</span>
-            <span><br/>Publicado hace: {renderVideo[0].fecha}</span>
+            <span><br/>Publicado hace: {renderVideo.fecha}</span>
           </div>
           <div className="border-t-2 border-black py-2 items-center">
             <h4>Estrellas:</h4>
-            {renderVideo[0].actor.length < 1 ? (
+            {renderVideo.actor.length < 1 ? (
               <span className="text-[#D63423] font-bold">Unknown</span>
             ) : (
-              renderVideo[0].actor?.map((actor: string) => {
+              renderVideo.actor?.map((actor: string) => {
                 return (
                   <Link
                     href={`/actores/${actor.replace(' ', '-')}`}

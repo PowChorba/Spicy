@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CategoryPost } from 'types';
 
@@ -9,6 +9,12 @@ export class CategoryController {
     @Get()
     findAll(){
         return this.categoryService.findAll()
+    }
+
+    
+    @Get(':id')
+    getCategory(@Param('id') id:number) {
+        return this.categoryService.counterClic(id)
     }
 
     @Post()

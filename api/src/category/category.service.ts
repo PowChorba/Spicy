@@ -29,4 +29,24 @@ export class CategoryService {
         })
         return allCategory
     }
+
+    async counterClic(id: number){
+
+        console.log('entra aca asdasdsd', id)
+        const findCategory = await this.categoryModel.findOne({
+            idCategory: id
+        })
+        if(findCategory.counter) findCategory.counter = findCategory.counter + 1
+        else findCategory.counter = 1
+        await findCategory.save()
+        let allCategory: CategoryPost[] = await this.categoryModel.find()
+        allCategory = allCategory?.sort((a: CategoryPost,b: CategoryPost) => {
+            const nameA = a.name.toUpperCase()
+            const nameB = b.name.toUpperCase()
+            if (nameA < nameB) return -1
+            if (nameA > nameB) return 1
+            return 0
+        })
+        return allCategory
+    }
 }

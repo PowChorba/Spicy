@@ -3,6 +3,7 @@ import Link from "next/link";
 import CatalogStars from "./helper/CatalogStars";
 import CatalogAccion from "./helper/CatalogAccion";
 import { useState } from "react";
+import CatalogRecom from "./helper/CatalogRecom";
 
 export default function CategoryCatalog(){
     const [listado, setListado] = useState('estrellas')
@@ -12,7 +13,11 @@ export default function CategoryCatalog(){
             return <CatalogStars/>
         }else if(listado === 'accion'){
             return <CatalogAccion/>
-        }else {
+        }
+        // else if(listado === 'recomendado'){
+        //     return <CatalogRecom/>
+        // }
+        else {
             return <div>Holaaa</div>
         }
     }
@@ -20,7 +25,7 @@ export default function CategoryCatalog(){
     return(
         <>
             <ul className="h-full gap-5 flex flex-col py-2 text-center">
-                <li>Recomendados</li>
+            {/* <button onClick={() => setListado('recomendado')} className={listado === 'recomendado' ? 'bg-[#D63423] p-2' : 'py-2'}>Recomendados</button> */}
                 <button onClick={() => setListado('estrellas')} className={listado === 'estrellas' ? 'bg-[#D63423] p-2' : 'py-2'}>Estrellas</button>
                 <button onClick={() => setListado('accion')} className={listado === 'accion' ? 'bg-[#D63423] py-2' : 'py-2'}>Accion</button>
                 <li onClick={() => setListado('historia')}>Con historia</li>

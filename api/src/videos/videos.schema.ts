@@ -42,6 +42,9 @@ export class Videos {
     @Prop()
     fuente: string
 
+    @Prop()
+    counter: number
+
 }
 
 export const VideosSchema = SchemaFactory.createForClass(Videos)

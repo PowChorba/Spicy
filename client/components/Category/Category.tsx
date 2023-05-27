@@ -32,9 +32,6 @@ export default function CategoryCard({ name, idCategory, img, videos }: Props) {
           {`(${filterVideo?.length}) videos`}
         </span>
       </div>
-      {/* <div className="p-4 text-center">
-        <h4 className="font-bold">{name}</h4>
-      </div> */}
     </Link>
   );
 }

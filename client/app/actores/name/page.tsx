@@ -1,12 +1,11 @@
 import Navbar from "@/components/Navbar/Navbar";
 import { getActorIndividual } from "../service/pornstar.service";
-import Image from "next/image";
 import PornstartCardDos from "@/components/Pornstars/PornstarCardDos";
 import Videos from "@/components/Videos/Videos";
 import { VideoFormat } from "@/types";
 
-export default async function InvididualActor({ params }: any) {
-  let nameActor = params.name.replace("-", " ");
+export default async function InvididualActor({ searchParams }: any) {
+  let nameActor = searchParams.name.replace("-", " ");
   const actorData = await getActorIndividual(nameActor);
   const actor = actorData[0][0];
   const videos: VideoFormat[] = actorData[1];

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { PornstarService } from './pornstar.service';
 import { PornstarPost } from 'types';
 
@@ -11,13 +11,13 @@ export class PornstarController {
         return this.pornstarService.createPornstar(data)
     }
 
-    @Get()
-    findAll(){
-        return this.pornstarService.findAll()
+    @Get(':page')
+    findAll(@Param('page') page: string){
+        return this.pornstarService.findAll(page)
     }
 
-    @Get(':name')
-    findOne(@Param('name') name:string){
+    @Get()
+    findOne(@Query('name') name:string){
             return this.pornstarService.findByName(name)
     }
 }

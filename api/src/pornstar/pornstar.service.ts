@@ -24,9 +24,11 @@ export class PornstarService {
         return pornstar.save()
     }
 
-    async findAll(){
+    async findAll(page: string){
+        const limit = 48;
+        const skip = (parseInt(page) - 1) * limit;
         const allVideos = await this.videosModel.find()
-        let modelos = await this.pornstarModel.find()
+        let modelos = await this.pornstarModel.find().exec()
         for(let i=0; i < modelos.length; i++){
             const videos = allVideos.filter(video => video.actor.includes(modelos[i].name))
             modelos[i].videos = videos.length
@@ -36,7 +38,8 @@ export class PornstarService {
             if(a.videos < b.videos) return 1
             return 0
         })
-        return modelos
+        const slicedModelos = modelos.slice(skip, skip + limit);
+        return slicedModelos
     }
 
     async findByName(name: string){

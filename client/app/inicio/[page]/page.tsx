@@ -22,11 +22,6 @@ export default async function HomeDos({params}: any) {
           })
         }
       </div>
-      {/* <select className="absolute right-0 bg-[#252525] text-white">
-        <option value="Recomendados">Recomendados</option>
-        <option value="Ultimos">Ultimos Agregados</option>
-        <option value="Mas vistos">Mas Vistos</option>
-      </select> */}
       </div>
       <>
         <VideoRender data={data} params={params.page}/>

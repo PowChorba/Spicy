@@ -28,7 +28,7 @@ export class VideosService {
   }
 
   async findAll(page: string) {
-    const limit = 32;
+    const limit = 48;
     const skip = (parseInt(page) - 1) * limit;
     let allVideos = await this.videosModel.find().exec();
     // let allVideos = await this.videosModel.find().skip(skip).limit(limit).exec();

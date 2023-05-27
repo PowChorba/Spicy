@@ -30,7 +30,7 @@ export default function Videos({
   return (
     <Link prefetch={false}
       href={`/videos/${_id}`}
-      className="mt-2 break-words bg-[#00000015] rounded-lg relative text-ellipsis shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] overflow-hidden"
+      className="mt-2 break-words bg-[#00000015] rounded-lg relative text-ellipsis shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] overflow-hidden max-h-[275px]"
     >
       <div className="relative">
         <Image

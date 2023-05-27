@@ -53,6 +53,7 @@ export default async function VideoWatch({ params }: any) {
           <iframe
             src={renderVideo.url}
             allowFullScreen
+            // height="481" width="608" scrolling="no"
             className="w-full h-[600px] border-black border-2 rounded-lg max-xl:h-[350px] max-sm:h-[350px]  overflow-hidden"
           ></iframe>
           <div className="py-2">

@@ -18,6 +18,6 @@ export class PornstarController {
 
     @Get(':name')
     findOne(@Param('name') name:string){
-        return this.pornstarService.findByName(name)
+            return this.pornstarService.findByName(name)
     }
 }

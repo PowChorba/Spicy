@@ -32,8 +32,8 @@ export class PornstarService {
             modelos[i].videos = videos.length
         }
         modelos = modelos.sort((a,b) => {
-            if(a.videos > b.videos) 1
-            if(a.videos < b.videos) -1
+            if(a.videos > b.videos) return -1
+            if(a.videos < b.videos) return 1
             return 0
         })
         return modelos

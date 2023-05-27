@@ -13,13 +13,10 @@ export class VideosController {
 
     @Get(':page')
     getVideos(@Param('page') page: string){
-        console.log(page,'page \n' )
         if(page.length < 4 && page.length !== 0){
             return this.videosService.findAll(page)
         }else{
-            console.log('entra aca CUANDO NO TIENE QUE')
             return this.videosService.findById(page)
-
         }
     }
     

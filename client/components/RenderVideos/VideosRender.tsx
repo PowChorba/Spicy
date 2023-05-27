@@ -1,6 +1,7 @@
 import { VideoFormat } from "@/types";
 import Videos from "../Videos/Videos";
 import Link from "next/link";
+import VideosSkeleton from "../Skeleton/VideosSkeleton";
 interface Props {
   data: VideoFormat[];
   params: string;
@@ -13,21 +14,25 @@ export default function VideoRender({ data, params }: Props) {
   return (
     <>
       <div className="grid grid-cols-4 gap-2 mb-4  max-xl:grid-cols-3 max-sm:grid-cols-2 max-sm:gap-1">
-        {data?.map((e) => {
-          return (
-            <Videos
-              key={e._id}
-              _id={e._id}
-              title={e.title}
-              url={e.url}
-              imgPreview={e.imgPreview}
-              vidPreview={e.vidPreview}
-              duration={e.duration}
-              rating={e.rating}
-              views={e.views}
-            />
-          );
-        })}
+        {
+          !data 
+          ? [... new Array(48).map(e => {return <VideosSkeleton key={e}/>})]
+          : data?.map((e) => {
+            return (
+              <Videos
+                key={e._id}
+                _id={e._id}
+                title={e.title}
+                url={e.url}
+                imgPreview={e.imgPreview}
+                vidPreview={e.vidPreview}
+                duration={e.duration}
+                rating={e.rating}
+                views={e.views}
+              />
+            );
+          })
+        }
       </div>
       <div className="mt-2 py-2 rounded-lg text-center bg-[#252525]">
         <Link

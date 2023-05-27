@@ -19,10 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="juicyads-site-verification" content="1de495bca9a7dc518a6265ac9675c465"></meta>
-        <meta name="exoclick-site-verification" content="ee7b02b9884b489586762d5be1f5048e"></meta>
+        {/* <meta name="exoclick-site-verification" content="ee7b02b9884b489586762d5be1f5048e"></meta> */}
+        {/* <iframe src="//a.realsrv.com/iframe.php?idzone=4992990&size=300x100" width="300" height="100" scrolling="no"></iframe> */}
         <script type="text/javascript" src="https://js.juicyads.com/jp.php?c=34d433u2q224u4q2w2f4x25434&u=http%3A%2F%2Fwww.juicyads.rocks"></script>
         <script type="text/javascript" data-id="juicyads-native-ads" data-ad-zone="1022274" data-targets="a" src="https://js.juicyads.com/juicyads.native-ads.min.js"></script>
-        <script type="text/javascript" src="https://js.juicyads.com/jp.php?c=34d433u2q224u4q2w2f4x25434&u=http%3A%2F%2Fwww.juicyads.rocks"></script>
       </head>
       <body className='w-3/4 mx-auto bg-gray-200 max-sm:w-full'>{children}</body>
     </html>

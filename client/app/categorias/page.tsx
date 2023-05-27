@@ -3,7 +3,6 @@ import { CategoryFormat, VideoFormat } from "@/types";
 import { getCategory, getVideos } from "./service/category.service";
 import CategoryCard from "@/components/Category/Category";
 
-
 export default async function Category(){
     const categorys:CategoryFormat[] = await getCategory()
     const videos: VideoFormat[] = await getVideos()

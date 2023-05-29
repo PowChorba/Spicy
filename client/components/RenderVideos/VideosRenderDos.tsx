@@ -36,7 +36,6 @@ export default function VideoRenderDos({ data }: Props) {
         currentPosts?.map((e) => {
           return (
               <Videos
-              fuente={e.fuente}
               key={e._id}
               _id={e._id}
               title={e.title}
@@ -46,6 +45,7 @@ export default function VideoRenderDos({ data }: Props) {
               duration={e.duration}
               rating={e.rating}
               views={e.views}
+              fuente={e.fuente}
               />
               );
             })

@@ -46,6 +46,7 @@ export default async function InvididualActor({ searchParams }: any) {
                     duration={e.duration}
                     rating={e.rating}
                     views={e.views}
+                    fuente={e.fuente}
                   />
                 );
               })

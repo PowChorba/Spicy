@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Videos } from './videos.schema';
+import { Videos, VideosSchema } from './videos.schema';
 import { Model } from 'mongoose';
-import { VideosSchema } from 'types';
+import { VideosType } from 'types';
 // import { categoryName } from './helper/videos.helper';
 
 @Injectable()
 export class VideosService {
   constructor(@InjectModel(Videos.name) private videosModel: Model<Videos>) {}
 
-  async newVideo(createOne: VideosSchema): Promise<Videos> {
+  async newVideo(createOne: VideosType): Promise<Videos> {
     const video = await new this.videosModel({
       title: createOne.title,
       url: createOne.url,
@@ -30,8 +30,26 @@ export class VideosService {
   async findAll(page: string) {
     const limit = 48;
     const skip = (parseInt(page) - 1) * limit;
-    let allVideos = await this.videosModel.find().exec();
-    // let allVideos = await this.videosModel.find().skip(skip).limit(limit).exec();
+    let allVideos  = await this.videosModel.find().exec();
+    // allVideos = allVideos.map((e) => {
+    //   if(e.views.length >= 8 && e.fuente === 'YouPorn'){
+    //     const newViews = e.views.split(' ')
+    //     e.views = `${newViews[0]} vistas`
+    //     // e.views = `${newViews[0]}.${newViews[1][0]}M de vistas`
+    //     e.save()
+    //   }else if(e.views.length < 8 && (!e.views.includes('M') || !e.views.includes('K'))){
+    //     const newViews = e.views.split(' ')
+    //     // e.views = `${newViews[0]}K de vistas`
+    //     e.views = `${newViews[0]} vistas`
+    //   }
+    //   return e
+    // })
+    allVideos = allVideos.sort((a, b) => {
+      if (a.views > b.views) return -1;
+      if (a.views < b.views) return 1;
+      return 0;
+    });
+
     allVideos = allVideos.sort((a, b) => {
       if (a.views.includes('M') > b.views.includes('M')) return -1;
       if (a.views.includes('M') < b.views.includes('M')) return 1;
@@ -42,7 +60,6 @@ export class VideosService {
   }
 
   async findById(id: string) {
-    console.log('Esta haciendo peticion cuando no tiene que hacer')
     try {
         const findVideo = await this.videosModel.findOne({
           _id: id,
@@ -82,7 +99,7 @@ export class VideosService {
           ];
         } else {
           title = title.toLowerCase();
-          let findVideo: VideosSchema[] = await this.videosModel.find();
+          let findVideo: VideosType[] = await this.videosModel.find();
           // const asd = findVideo.map(e => categoryName(e.category))
           // for(let i =0; i < findVideo.length; i++){
           //   findVideo[i].category = asd[i]
@@ -111,7 +128,7 @@ export class VideosService {
 
   async findByCategory(id: number) {
     try {
-      let findVideos: VideosSchema[] = await this.videosModel.find();
+      let findVideos: VideosType[] = await this.videosModel.find();
       findVideos = findVideos.filter((e) => e.category.includes(id));
       return findVideos;
     } catch (error) {

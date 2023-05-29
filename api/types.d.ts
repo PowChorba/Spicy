@@ -1,4 +1,4 @@
-export type VideosSchema = {
+export type VideosType = {
   title: string;
   url: string;
   duration: string;

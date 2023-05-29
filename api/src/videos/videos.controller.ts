@@ -1,13 +1,13 @@
 import { Body, Controller, Post, Get, Param, Query } from '@nestjs/common';
 import { VideosService } from './videos.service';
-import { VideosSchema } from 'types';
+import { VideosType } from 'types';
 
 @Controller('videos')
 export class VideosController {
     constructor(private videosService: VideosService) {}
 
     @Post()
-    createVideo(@Body() createOne: VideosSchema){
+    createVideo(@Body() createOne: VideosType){
         return this.videosService.newVideo(createOne)
     }
 

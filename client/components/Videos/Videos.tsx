@@ -1,3 +1,4 @@
+import { titleAcentos } from "@/app/videos/[id]/utils/videos.helper";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,6 +11,7 @@ interface Props {
   rating: number;
   url: string;
   views: string
+  fuente: string
 }
 
 export default function Videos({
@@ -18,14 +20,23 @@ export default function Videos({
   duration,
   rating,
   _id,
-  views
+  views,
+  fuente
 }: Props) {
-  if(title.includes('%a%')) title = title.replace(/%a%/g, 'á')
-  if(title.includes('%e%')) title = title.replace(/%e%/g, 'é')
-  if(title.includes('%i%')) title = title.replace(/%i%/g, 'í')
-  if(title.includes('%o%')) title = title.replace(/%o%/g, 'ó')
-  if(title.includes('%u%')) title = title.replace(/%u%/g, 'ú')
-  if(title.includes('%n%')) title = title.replace(/%n%/g, 'ñ')
+
+  const fuenteVideo = (fuente:string) =>{
+    if (fuente === "PornHub") {
+      return <p className="text-xs absolute bottom-2 left-32">
+        <span className="font-bold">Porn</span>
+        <span className="text-[#ff9000] font-bold">Hub</span>
+      </p>
+    }
+    else if(fuente=== 'YouPorn'){
+      return <p className="text-xs absolute bottom-2 left-32">
+      <span className="font-bold">You</span>
+        <span className="text-[#ec567c] font-bold">Porn</span></p>
+    }
+  }
 
   return (
     <Link prefetch={false}
@@ -45,10 +56,11 @@ export default function Videos({
         </span>
       </div>
       <div className="py-4 h-28 text-center max-sm:h-14 max-sm:p-2 max-lg:truncate">
-        <h4 className="font-bold text-sm">{title}</h4>
+        <h4 className="font-bold text-sm">{titleAcentos(title)}</h4>
       </div>
       <span className="text-xs absolute bottom-2 left-2 text-[#8faf20] font-bold"> {rating}%</span>
       <span className="text-xs absolute bottom-2 left-12 text-[#F9005F] font-bold">{views}</span>
+      {fuenteVideo(fuente)}
     </Link>
   );
 }

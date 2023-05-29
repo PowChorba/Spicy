@@ -13,6 +13,12 @@ const nextConfig = {
       },
       {
         hostname: "fi1.ypncdn.com"
+      },
+      {
+        hostname: "fi1-ph.ypncdn.com"
+      },
+      {
+        hostname: "di1-ph.ypncdn.com"
       }
     ]
   }

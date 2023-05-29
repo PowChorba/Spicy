@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { CategoryFormat, VideoFormat } from "@/types";
 import Link from "next/link";
 import { getAllVideos, getVideo } from "../service/videos.service";
-import { getRandomNumber, randomSort } from "./utils/videos.helper";
+import { getRandomNumber, randomSort, titleAcentos } from "./utils/videos.helper";
 import SmallVideos from "@/components/Videos/SmallVideos";
 import { getCategory } from "@/app/categorias/service/category.service";
 import { AiFillLike } from "react-icons/ai";
@@ -16,15 +16,9 @@ export default async function VideoWatch({ params }: any) {
   const randomNumber = getRandomNumber(1, 1600);
   const videosFilter = allVideos.slice(randomNumber, randomNumber + 5);
   // Para mostrar las categorias y poder ir hacia cada una de ellas
-  const categoryFilter = category.filter((e) =>
-    renderVideo.category.includes(e.idCategory)
-  );
+  const categoryFilter = category.filter((e) => renderVideo.category.includes(e.idCategory));
   // Para mostrar los videos abajo de los datos
-  let relatedVideos = allVideos.filter((e) =>
-    e.category.includes(
-      renderVideo.category[1] || renderVideo.category[0]
-    )
-  );
+  let relatedVideos = allVideos.filter((e) => e.category.includes(renderVideo.category[1] || renderVideo.category[0]));
   relatedVideos = relatedVideos.filter((e) => e.title !== renderVideo.title);
   relatedVideos = relatedVideos.sort(randomSort);
   relatedVideos = relatedVideos.slice(0, 20);
@@ -32,18 +26,20 @@ export default async function VideoWatch({ params }: any) {
   renderVideo.fecha = renderVideo.fecha.replace("%a%", "á");
   renderVideo.fecha = renderVideo.fecha.replace("%n%", "ñ");
 
-  if (renderVideo.title.includes("%a%"))
-    renderVideo.title = renderVideo.title.replace(/%a%/g, "á");
-  if (renderVideo.title.includes("%e%"))
-    renderVideo.title = renderVideo.title.replace(/%e%/g, "é");
-  if (renderVideo.title.includes("%i%"))
-    renderVideo.title = renderVideo.title.replace(/%i%/g, "í");
-  if (renderVideo.title.includes("%o%"))
-    renderVideo.title = renderVideo.title.replace(/%o%/g, "ó");
-  if (renderVideo.title.includes("%u%"))
-    renderVideo.title = renderVideo.title.replace(/%u%/g, "ú");
-  if (renderVideo.title.includes("%n%"))
-    renderVideo.title = renderVideo.title.replace(/%n%/g, "ñ");
+
+  const fuenteVideo = (fuente:string) =>{
+    if (fuente === "PornHub") {
+      return <>
+        <span className="font-bold">Porn</span>
+        <span className="text-[#ff9000] font-bold">Hub</span>
+      </>
+    }
+    else if(fuente=== 'YouPorn'){
+      return <>
+      <span className="font-bold">You</span>
+        <span className="text-[#ec567c] font-bold">Porn</span></>
+    }
+  }
 
   return (
     <>
@@ -58,7 +54,9 @@ export default async function VideoWatch({ params }: any) {
           ></iframe>
           <div className="py-2">
             <h3 className="font-semibold text-2xl max-xl:text-lg">
-              {renderVideo.title}
+              {
+                titleAcentos(renderVideo.title)
+              }
             </h3>
             <span className="flex gap-1 items-center">
               <AiFillLike />
@@ -66,8 +64,9 @@ export default async function VideoWatch({ params }: any) {
             </span>
             <span>{renderVideo.views}{' '}<br/></span>
             <span>Fuente del video: </span>
-            <span className="font-bold">Porn</span>
-            <span className="text-[#ff9000] font-bold">Hub</span>
+            {
+              fuenteVideo(renderVideo.fuente)
+            }
             <span><br/>Publicado hace: {renderVideo.fecha}</span>
           </div>
           <div className="border-t-2 border-black py-2 items-center">
@@ -78,7 +77,7 @@ export default async function VideoWatch({ params }: any) {
               renderVideo.actor?.map((actor: string) => {
                 return (
                   <Link
-                    href={`/actores/${actor.replace(' ', '-')}`}
+                    href={`/actores/name?name=${actor.replace(' ', '-')}`}
                     key={actor}
                     className="text-[#D63423] font-bold"
                   >

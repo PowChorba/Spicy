@@ -36,6 +36,7 @@ export default function VideoRenderDos({ data }: Props) {
         currentPosts?.map((e) => {
           return (
               <Videos
+              fuente={e.fuente}
               key={e._id}
               _id={e._id}
               title={e.title}

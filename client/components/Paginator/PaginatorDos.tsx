@@ -22,7 +22,7 @@ export default function PaginationDos({ prev, next, actual }: Props) {
       <button
       onClick={handlePrev}
         className={
-          next === 0
+          prev === 0
             ? "hidden"
             : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"
         }

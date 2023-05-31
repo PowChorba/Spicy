@@ -43,4 +43,5 @@ export interface PornstarFormat {
   horoscope: string;
   etnia: string;
   videos: number
+  ranking: number
 }

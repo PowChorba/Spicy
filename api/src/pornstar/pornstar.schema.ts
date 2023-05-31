@@ -32,6 +32,10 @@ export class Pornstar {
     
     @Prop()
     etnia: string
+
+    @Prop()
+    ranking: number
+
 }
 
 export const PornstarSchema = SchemaFactory.createForClass(Pornstar)

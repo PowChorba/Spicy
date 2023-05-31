@@ -27,19 +27,26 @@ export class PornstarService {
     async findAll(page: string){
         const limit = 48;
         const skip = (parseInt(page) - 1) * limit;
-        const allVideos = await this.videosModel.find()
-        let modelos = await this.pornstarModel.find().exec()
-        for(let i=0; i < modelos.length; i++){
-            const videos = allVideos.filter(video => video.actor.includes(modelos[i].name))
-            modelos[i].videos = videos.length
-        }
-        modelos = modelos.sort((a,b) => {
-            if(a.videos > b.videos) return -1
-            if(a.videos < b.videos) return 1
-            return 0
-        })
-        const slicedModelos = modelos.slice(skip, skip + limit);
-        return slicedModelos
+        // const allVideos = await this.videosModel.find()
+        const modelos: PornstarPost[] = (await this.pornstarModel.find().sort({videos: -1}).skip(skip).limit(limit).exec())
+        // let modelos = await this.pornstarModel.find()
+        // for(let i=0; i < modelos.length; i++){
+        //     const videos = allVideos.filter(video => video.actor.includes(modelos[i].name))
+        //     modelos[i].videos = videos.length
+        //     modelos[i].save()
+        // }
+        // modelos = modelos.sort((a,b) => {
+        //     if(a.videos > b.videos) return -1
+        //     if(a.videos < b.videos) return 1
+        //     return 0
+        // })
+        // for(let i=0; i < modelos.length; i++){
+        //     modelos[i].ranking = i + 1
+        //     modelos[i].save()
+        // }
+        
+        // const slicedModelos = modelos.slice(skip, skip + limit);
+        return modelos
     }
 
     async findByName(name: string){

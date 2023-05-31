@@ -30,20 +30,8 @@ export class VideosService {
   async findAll(page: string) {
     const limit = 48;
     const skip = (parseInt(page) - 1) * limit;
-    let allVideos  = await this.videosModel.find().exec();
-    // allVideos = allVideos.map((e) => {
-    //   if(e.views.length >= 8 && e.fuente === 'YouPorn'){
-    //     const newViews = e.views.split(' ')
-    //     e.views = `${newViews[0]} vistas`
-    //     // e.views = `${newViews[0]}.${newViews[1][0]}M de vistas`
-    //     e.save()
-    //   }else if(e.views.length < 8 && (!e.views.includes('M') || !e.views.includes('K'))){
-    //     const newViews = e.views.split(' ')
-    //     // e.views = `${newViews[0]}K de vistas`
-    //     e.views = `${newViews[0]} vistas`
-    //   }
-    //   return e
-    // })
+    let allVideos = await this.videosModel.find().skip(skip).limit(limit).exec();
+    // let allVideos = await this.videosModel.find().exec();
     allVideos = allVideos.sort((a, b) => {
       if (a.views > b.views) return -1;
       if (a.views < b.views) return 1;
@@ -55,8 +43,8 @@ export class VideosService {
       if (a.views.includes('M') < b.views.includes('M')) return 1;
       return 0;
     });
-    const slicedVideos = allVideos.slice(skip, skip + limit);
-    return slicedVideos;
+    // const slicedVideos = allVideos.slice(skip, skip + limit);
+    return allVideos;
   }
 
   async findById(id: string) {
@@ -99,11 +87,7 @@ export class VideosService {
           ];
         } else {
           title = title.toLowerCase();
-          let findVideo: VideosType[] = await this.videosModel.find();
-          // const asd = findVideo.map(e => categoryName(e.category))
-          // for(let i =0; i < findVideo.length; i++){
-          //   findVideo[i].category = asd[i]
-          // }e.title.toLowerCase().includes(title) ||
+          let findVideo: VideosType[] = await this.videosModel.find({"title" : {$regex : title}});
           findVideo = findVideo.filter((e) => e.title.toLowerCase().includes(title));
           findVideo = findVideo.sort((a, b) => {
             if (a.views.includes('M') > b.views.includes('M')) return -1;

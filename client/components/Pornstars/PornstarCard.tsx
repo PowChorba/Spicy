@@ -18,15 +18,16 @@ export default function PornstarCard({name, img, _id, index, videos}:Props){
           alt="T"
           width="250"
           height="350"
-          className="rounded-tl-lg rounded-tr-lg"
+          className="rounded-tl-lg rounded-tr-lg w-[100%]"
         />
         <h4 className="font-bold py-2 text-white">{name}</h4>
         <div className="flex justify-between px-2">
-        <span className="text-white text-sm">
+        {/* <span className="text-white text-sm">
             Ranking: <span className="text-[#D63423]">{index + 1}</span>
-        </span>
+        </span> */}
         <span className="text-white text-sm">
-            Videos: <span className="text-[#D63423]">{videos}</span></span>
+            Videos: <span className="text-[#D63423]">{videos}</span>
+            </span>
         </div>
     </Link>)
-}
+}   

@@ -11,7 +11,8 @@ import { PornstarModule } from './pornstar/pornstar.module';
   imports: [
     MongooseModule.forRootAsync({
       useFactory: () => ({
-        uri: 'mongodb+srv://powChorba:monofeo123@spicy.yj3cgur.mongodb.net/test',
+        uri: 'mongodb+srv://doadmin:8S7L9TBe6Y2q03j1@db-mongodb-nyc1-03433-78d856ee.mongo.ondigitalocean.com/',
+        // uri: 'mongodb+srv://powChorba:monofeo123@spicy.yj3cgur.mongodb.net/test'
       }),
     }),
     VideosModule,

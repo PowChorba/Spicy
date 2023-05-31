@@ -2,6 +2,7 @@ import { VideoFormat } from "@/types";
 import Videos from "../Videos/Videos";
 import Link from "next/link";
 import VideosSkeleton from "../Skeleton/VideosSkeleton";
+import PaginationDos from "../Paginator/PaginatorDos";
 interface Props {
   data: VideoFormat[];
   params: string;
@@ -36,7 +37,7 @@ export default function VideoRender({ data, params }: Props) {
         }
       </div>
       <div className="mt-2 py-2 rounded-lg text-center bg-[#252525]">
-        <Link
+        {/* <Link
           href={`/inicio/${prevPage}`}
           className={
             prevPage === 0
@@ -54,7 +55,8 @@ export default function VideoRender({ data, params }: Props) {
           className="p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"
         >
           {nextPage}
-        </Link>
+        </Link> */}
+        <PaginationDos next={nextPage} prev={prevPage} actual={params}/>
       </div>
     </>
   );

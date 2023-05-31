@@ -40,4 +40,5 @@ export type PornstarPost = {
   sex: string
   horoscope: string
   etnia: string
+  ranking: number
 }

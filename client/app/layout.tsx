@@ -18,14 +18,14 @@ export default function RootLayout({
     
     <html lang="en">
       <head>
-        {/* <meta name="juicyads-site-verification" content="1de495bca9a7dc518a6265ac9675c465"></meta>
+        <meta name="juicyads-site-verification" content="1de495bca9a7dc518a6265ac9675c465"></meta>
         <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
         <ins id="1023600" data-width="308" data-height="298"></ins>
         <script type="text/javascript" data-cfasync="false" async dangerouslySetInnerHTML={{
               __html: `(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1023600});`,
             }}></script>
         <script type="text/javascript" src="https://js.juicyads.com/jp.php?c=34d433u2q224u4q2w2f4x25434&u=http%3A%2F%2Fwww.juicyads.rocks"></script>
-        <script type="text/javascript" data-id="juicyads-native-ads" data-ad-zone="1022274" data-targets="a" src="https://js.juicyads.com/juicyads.native-ads.min.js"></script> */}
+        <script type="text/javascript" data-id="juicyads-native-ads" data-ad-zone="1022274" data-targets="a" src="https://js.juicyads.com/juicyads.native-ads.min.js"></script>
       </head>
       <body className='w-3/4 mx-auto bg-gray-200 max-sm:w-full'>{children}</body>
     </html>

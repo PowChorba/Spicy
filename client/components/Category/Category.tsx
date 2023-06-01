@@ -6,12 +6,12 @@ interface Props {
   name: string;
   idCategory: number;
   img: string;
-  videos?: VideoFormat[];
+  videos?: number;
 }
 
 
 export default function CategoryCard({ name, idCategory, img, videos }: Props) {
-  const filterVideo = videos?.filter((e) => e.category?.includes(idCategory));
+  // const filterVideo = videos?.filter((e) => e.category?.includes(idCategory));
   return (
     <Link
       href={`/categorias/${idCategory}`}
@@ -29,7 +29,7 @@ export default function CategoryCard({ name, idCategory, img, videos }: Props) {
         <span className="text-sm text-center py-20 text-white font-bold absolute bottom-0 left-0 h-full w-full bg-[#0000003f] max-xl:py-0">
           {name}
           <br />
-          {`(${filterVideo?.length}) videos`}
+          {`(${videos}) videos`}
         </span>
       </div>
     </Link>

@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
         <meta name="juicyads-site-verification" content="1de495bca9a7dc518a6265ac9675c465"></meta>
         <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
-        <ins id="1023600" data-width="308" data-height="298"></ins>
+        {/* <ins id="1023600" data-width="308" data-height="298"></ins> */}
         <script type="text/javascript" data-cfasync="false" async dangerouslySetInnerHTML={{
               __html: `(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1023600});`,
             }}></script>

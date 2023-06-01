@@ -48,6 +48,7 @@ export class VideosService {
   }
 
   async findById(id: string) {
+    console.log('Entra para hacer prefetching de los videos')
     try {
         const findVideo = await this.videosModel.findOne({
           _id: id,

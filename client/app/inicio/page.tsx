@@ -16,13 +16,13 @@ export default async function Home() {
       <Navbar />
       <div className="w-full relative items-center">
       <h4 className="font-bold py-2">Busquedas mas activas</h4>
-      <div className="flex items-center gap-2 w-full overflow-hidden">
+      <ul className="flex items-center gap-2 w-full overflow-hidden">
         {
           search?.map(e => {
             return <Trending key={e._id} word={e.word}/>
           })
         }
-      </div>
+      </ul>
       </div>
         <VideoRender data={data} params={'1'}/>
     </main>

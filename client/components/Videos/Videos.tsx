@@ -1,3 +1,5 @@
+'use client'
+import {useRouter} from 'next/navigation'
 import { titleAcentos } from "@/app/videos/[id]/utils/videos.helper";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,7 +25,7 @@ export default function Videos({
   views,
   fuente
 }: Props) {
-
+  const router = useRouter()
   const fuenteVideo = (fuente:string) =>{
     if (fuente === "PornHub") {
       return <p className="text-xs absolute bottom-2 left-32">
@@ -39,10 +41,7 @@ export default function Videos({
   }
 
   return (
-    <Link prefetch={false}
-      href={`/videos/${_id}`}
-      className="mt-2 break-words bg-[#00000015] rounded-lg relative text-ellipsis shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] overflow-hidden max-h-[325px]"
-    >
+    <li onClick={() => router.push(`/videos/${_id}`)} className="mt-2 break-words list-none bg-[#00000015] rounded-lg relative text-ellipsis shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] overflow-hidden max-h-[325px] cursor-pointer">
       <div className="relative">
         <Image
           src={imgPreview}
@@ -61,6 +60,6 @@ export default function Videos({
       <span className="text-xs absolute bottom-2 left-2 text-[#8faf20] font-bold"> {rating}%</span>
       <span className="text-xs absolute bottom-2 left-12 text-[#F9005F] font-bold">{views}</span>
       {fuenteVideo(fuente)}
-    </Link>
+    </li>
   );
 }

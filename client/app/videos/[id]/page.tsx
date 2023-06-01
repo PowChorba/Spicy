@@ -1,24 +1,25 @@
 import Navbar from "@/components/Navbar/Navbar";
-import { CategoryFormat, VideoFormat } from "@/types";
+import { CategoryFormat, CategoryReduce, VideoFormat } from "@/types";
 import Link from "next/link";
-import { getAllVideos, getVideo } from "../service/videos.service";
-import { getRandomNumber, randomSort, titleAcentos } from "./utils/videos.helper";
+import { getAllVideos, getCategoryVideos, getVideo } from "../service/videos.service";
+import { categoryName, getRandomNumber, randomCategory, randomSort, titleAcentos } from "./utils/videos.helper";
 import SmallVideos from "@/components/Videos/SmallVideos";
 import { getCategory } from "@/app/categorias/service/category.service";
 import { AiFillLike } from "react-icons/ai";
 import MediumVideos from "@/components/Videos/MediumVideos";
 
 export default async function VideoWatch({ params }: any) {
+  const randomNumber = getRandomNumber(1, 49);
   const renderVideo: VideoFormat = await getVideo(params.id);
-  const allVideos: VideoFormat[] = await getAllVideos();
-  const category: CategoryFormat[] = await getCategory();
+  // Para agarrar un categoria random, entre todas las del video.
+  const categoryFilter: CategoryReduce[] = categoryName(renderVideo.category)
+  const category = randomCategory(renderVideo.category)
+  // Para agarrar 50 videos random de cualquier pagina
+  const allVideos: VideoFormat[] = await getAllVideos(randomNumber);
   // Para mostrar los videos del aside
-  const randomNumber = getRandomNumber(1, 1600);
   const videosFilter = allVideos.slice(randomNumber, randomNumber + 5);
-  // Para mostrar las categorias y poder ir hacia cada una de ellas
-  const categoryFilter = category.filter((e) => renderVideo.category.includes(e.idCategory));
   // Para mostrar los videos abajo de los datos
-  let relatedVideos = allVideos.filter((e) => e.category.includes(renderVideo.category[1] || renderVideo.category[0]));
+  let relatedVideos: VideoFormat[] = await getCategoryVideos(category)
   relatedVideos = relatedVideos.filter((e) => e.title !== renderVideo.title);
   relatedVideos = relatedVideos.sort(randomSort);
   relatedVideos = relatedVideos.slice(0, 20);
@@ -89,11 +90,11 @@ export default async function VideoWatch({ params }: any) {
           </div>
           <div className="py-2 border-t-2 border-black flex gap-2 max-sm:gap-1 items-center">
             <h5>Categorias:</h5>
-            {categoryFilter.map((category: CategoryFormat) => {
+            {categoryFilter.map((category: CategoryReduce) => {
               return (
                 <Link
                   href={`/categorias/${category.idCategory}`}
-                  key={category._id}
+                  key={category.name}
                   className="border-2 border-[#D63423] bg-[#D63423] text-white px-2 rounded-lg max-sm:px-0 max-sm:text-xs"
                 >
                   {category.name}
@@ -125,6 +126,7 @@ export default async function VideoWatch({ params }: any) {
           <h5 className="font-bold border-b-2 border-black">
             Videos recomendados
           </h5>
+          <div className="flex flex-col gap-2">
           {videosFilter.map((video: VideoFormat) => {
             return (
               <SmallVideos
@@ -136,6 +138,7 @@ export default async function VideoWatch({ params }: any) {
               />
             );
           })}
+          </div>
         </aside>
       </div>
     </>

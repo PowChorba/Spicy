@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, ParseIntPipe } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CategoryPost } from 'types';
 
@@ -20,5 +20,10 @@ export class CategoryController {
     @Post()
     createCategory(@Body() name: CategoryPost) {
         return this.categoryService.newCategory(name)
+    }
+
+    @Get('/videos/:id')
+    getVideoCategory(@Param('id', ParseIntPipe) id: number){
+        return this.categoryService.videoCategory(id)
     }
 }

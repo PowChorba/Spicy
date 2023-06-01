@@ -1,6 +1,7 @@
+'use client'
 import Image from "next/image"
 import Link from "next/link"
-
+import { useRouter } from "next/navigation"
 interface Props {
     name: string
     img: string
@@ -11,9 +12,13 @@ interface Props {
 
 export default function PornstarCard({name, img, _id, index, videos}:Props){
     const nameModify = name?.replace(' ', '-')
+    const router = useRouter()
+
+
     return(
-    <Link href={`/actores/name?name=${nameModify}`} className="bg-[#252525] rounded-lg text-center shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)]">
-        <Image
+    // <Link href={`/actores/name?name=${nameModify}`} className="bg-[#252525] rounded-lg text-center shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)]">
+    <li onClick={() => router.push(`/actores/name?name=${nameModify}`)} className="bg-[#252525] list-none rounded-lg text-center shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] cursor-pointer">
+        <img
           src={img}
           alt="T"
           width="250"
@@ -29,5 +34,5 @@ export default function PornstarCard({name, img, _id, index, videos}:Props){
             Videos: <span className="text-[#D63423]">{videos}</span>
             </span>
         </div>
-    </Link>)
+    </li>)
 }   

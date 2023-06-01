@@ -21,12 +21,21 @@ export async function getVideo(id: string) {
     }
   }
 
-  export async function getAllVideos() {
+  export async function getAllVideos(number:number) {
     try {
-      const apiData = await axios.get(`http://localhost:3001/videos`);
+      const apiData = await axios.get(`http://localhost:3001/videos/${number}`);
       return apiData.data;
     } catch (error) {
       console.log(error);
     }
   } 
+
+  export async function getCategoryVideos(id: number){
+    try {
+        const apiData = await axios.get(`http://localhost:3001/category/videos/${id}`)
+        return apiData.data
+    } catch (error) {
+        console.log(error)
+    }
+}  
   

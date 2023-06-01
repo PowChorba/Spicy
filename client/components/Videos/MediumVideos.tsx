@@ -1,5 +1,7 @@
+'use client'
+import { titleAcentos } from "@/app/videos/[id]/utils/videos.helper";
 import Image from "next/image";
-import Link from "next/link";
+import {useRouter} from "next/navigation"
 
 interface Props {
   _id: string
@@ -20,18 +22,13 @@ export default function MediumVideos({
   url,
   _id
 }: Props) {
-
-  if(title.includes('%a%')) title = title.replace('%a%', 'á')
-  if(title.includes('%e%')) title = title.replace('%e%', 'é')
-  if(title.includes('%i%')) title = title.replace('%i%', 'í')
-  if(title.includes('%o%')) title = title.replace('%o%', 'ó')
-  if(title.includes('%u%')) title = title.replace('%u%', 'ú')
-  if(title.includes('%n%')) title = title.replace('%n%', 'ñ')
+  const router = useRouter()
 
   return (
-    <Link
-      href={`/videos/${_id}`}
-      className="mt-2 break-words bg-white rounded-lg relative text-ellipsis shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] overflow-hidden max-xl:truncate"
+    <li
+      // href={`/videos/${_id}`}
+      onClick={() => router.push(`/videos/${_id}`)}
+      className="mt-2 break-words cursor-pointer bg-white rounded-lg list-none relative text-ellipsis shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] overflow-hidden max-xl:truncate"
     >
       <div className="relative">
         <Image
@@ -46,9 +43,9 @@ export default function MediumVideos({
         </span>
       </div>
       <div className="p-2 text-center  max-xl:h-14">
-        <h4 className="font-bold text-sm">{title}</h4>
+        <h4 className="font-bold text-sm">{titleAcentos(title)}</h4>
       </div>
       <span className="text-xs absolute bottom-2 left-2 text-[#666666]">{rating}%</span>
-    </Link>
+    </li>
   );
 }

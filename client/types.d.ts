@@ -19,6 +19,12 @@ export interface CategoryFormat {
   idCategory: number;
   img: string;
   counter: number
+  videos: number
+}
+
+export interface CategoryReduce {
+  name: string
+  idCategory: number
 }
 
 export interface CategoryCounter { 

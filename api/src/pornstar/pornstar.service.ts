@@ -50,7 +50,8 @@ export class PornstarService {
     }
 
     async findByName(name: string){
-        let findAllVideos = await this.videosModel.find()
+        console.log('asdasdsadsadsadasdas')
+        let findAllVideos = (await this.videosModel.find({"actor" : {$regex : name}}))
         findAllVideos = findAllVideos.filter(e => e.actor.includes(name))
         const pornstar = await this.pornstarModel.find({
             name: name

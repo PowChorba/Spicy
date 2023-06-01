@@ -19,6 +19,9 @@ export class Category {
 
     @Prop()
     counter: number
+
+    @Prop()
+    videos: number
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category)

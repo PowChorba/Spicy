@@ -36,3 +36,12 @@ export async function getVideoId(id: string){
         console.log(error)        
     }
 }
+
+export async function getCategoryVideos(id: number){
+    try {
+        const apiData = await axios.get(`http://localhost:3001/category/videos/${id}`)
+        return apiData.data
+    } catch (error) {
+        console.log(error)
+    }
+}

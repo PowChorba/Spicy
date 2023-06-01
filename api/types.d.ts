@@ -18,6 +18,7 @@ export type CategoryPost = {
   idCategory: number;
   img: string;
   counter?: number
+  videos: number
 };
 
 export type CounterCategory = {

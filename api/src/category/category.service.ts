@@ -3,10 +3,11 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Category } from './category.schema';
 import { Model } from 'mongoose';
 import { CategoryPost } from 'types';
+import { Videos } from 'src/videos/videos.schema';
 
 @Injectable()
 export class CategoryService {
-    constructor(@InjectModel(Category.name) private categoryModel: Model<Category>){}
+    constructor(@InjectModel(Category.name) private categoryModel: Model<Category>,@InjectModel(Videos.name) private videosModel: Model<Videos>){}
 
     async newCategory(newCat: CategoryPost): Promise<Category> { 
         const category = await new this.categoryModel({
@@ -19,7 +20,12 @@ export class CategoryService {
     }
 
     async findAll(){
-        let allCategory: CategoryPost[] = await this.categoryModel.find()
+        let allCategory: any = await this.categoryModel.find()
+        // for(let i=0; i < allCategory.length; i++){
+        //     const videos = await this.videosModel.find({category: {$eq : allCategory[i].idCategory}})
+        //     allCategory[i].videos = videos.length
+        //     allCategory[i].save()
+        // }
         allCategory = allCategory?.sort((a: CategoryPost,b: CategoryPost) => {
             const nameA = a.name.toUpperCase()
             const nameB = b.name.toUpperCase()
@@ -31,8 +37,6 @@ export class CategoryService {
     }
 
     async counterClic(id: number){
-
-        console.log('entra aca asdasdsd', id)
         const findCategory = await this.categoryModel.findOne({
             idCategory: id
         })
@@ -48,5 +52,10 @@ export class CategoryService {
             return 0
         })
         return allCategory
+    }
+
+    async videoCategory(id: number){
+        const videos = await this.videosModel.find({category: {$eq : id}})
+        return videos
     }
 }

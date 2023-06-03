@@ -64,7 +64,7 @@ export default function Videos({
       </div>
       <span className="text-xs absolute bottom-2 left-2 text-[#8faf20] font-bold"> {rating}%</span>
       <span className="text-xs absolute bottom-2 left-12 text-[#F9005F] font-bold">{views}</span>
-      {fuenteVideo(fuente)}
+      {/* {fuenteVideo(fuente)} */}
     </li>
   );
 }

@@ -15,11 +15,13 @@ export async function middleware(request: NextRequest) {
   });
 
   if (request.nextUrl.pathname.endsWith("/video")) {
+    console.log(request.nextUrl.pathname)
     return NextResponse.redirect(new URL("/inicio", request.url));
   }
-  // if (request.nextUrl.pathname.includes("/actores/")) {
-  //   return NextResponse.redirect(new URL("/actores", request.url));
-  // }
+  if (request.nextUrl.pathname.includes("/videos/") && request.nextUrl.pathname.length > 32 && !request.nextUrl.pathname.includes('chunks')) {
+    const nuevaUrl = request.nextUrl.pathname.slice(0,32)
+    return NextResponse.redirect(new URL(nuevaUrl, request.url));
+  }
 
   if (request.nextUrl.pathname.endsWith("/") && nextCookies?.value === "true") {
     return NextResponse.redirect(new URL("/inicio", request.url));
@@ -32,6 +34,7 @@ export async function middleware(request: NextRequest) {
   ) {
     return NextResponse.redirect(new URL("/", request.url));
   }
+  
 
   return response;
 }

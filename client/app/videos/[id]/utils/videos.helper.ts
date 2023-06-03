@@ -20,12 +20,13 @@ export function titleAcentos(titleOne: string) {
 }
 
 export function randomCategory(category: number[]){
-  return category[getRandomNumber(0, category.length)];
+  if(category?.length > 0) return category[getRandomNumber(0, category?.length)];
+  else return 1
 }
 
 export const categoryName = (array: number[]) => {
   const newArray = []
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array?.length; i++) {
     if (array[i] === 2) newArray.push({name: 'Orgías', idCategory: 2});
     else if(array[i] === 1) newArray.push({name:'Amateur',idCategory:1}) 
     else if (array[i] === 3) newArray.push({name:'Anal', idCategory:3});

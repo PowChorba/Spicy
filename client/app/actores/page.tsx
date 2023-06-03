@@ -6,7 +6,6 @@ import Link from "next/link";
 
 export default async function Pornstars(){
     const data: PornstarFormat[] = await getPornstars('1')
-    console.log(data[0].ranking, 'asdasdsadsad')
 
     return(
         <main>

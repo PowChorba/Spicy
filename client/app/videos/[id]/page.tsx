@@ -4,7 +4,6 @@ import Link from "next/link";
 import { getAllVideos, getCategoryVideos, getVideo } from "../service/videos.service";
 import { categoryName, getRandomNumber, randomCategory, randomSort, titleAcentos } from "./utils/videos.helper";
 import SmallVideos from "@/components/Videos/SmallVideos";
-import { getCategory } from "@/app/categorias/service/category.service";
 import { AiFillLike } from "react-icons/ai";
 import MediumVideos from "@/components/Videos/MediumVideos";
 
@@ -12,20 +11,20 @@ export default async function VideoWatch({ params }: any) {
   const randomNumber = getRandomNumber(1, 49);
   const renderVideo: VideoFormat = await getVideo(params.id);
   // Para agarrar un categoria random, entre todas las del video.
-  const categoryFilter: CategoryReduce[] = categoryName(renderVideo.category)
-  const category = randomCategory(renderVideo.category)
+  const categoryFilter: CategoryReduce[] = categoryName(renderVideo?.category)
+  const category = randomCategory(renderVideo?.category)
   // Para agarrar 50 videos random de cualquier pagina
   const allVideos: VideoFormat[] = await getAllVideos(randomNumber);
   // Para mostrar los videos del aside
   const videosFilter = allVideos.slice(randomNumber, randomNumber + 5);
   // Para mostrar los videos abajo de los datos
   let relatedVideos: VideoFormat[] = await getCategoryVideos(category)
-  relatedVideos = relatedVideos.filter((e) => e.title !== renderVideo.title);
+  relatedVideos = relatedVideos.filter((e) => e.title !== renderVideo?.title);
   relatedVideos = relatedVideos.sort(randomSort);
   relatedVideos = relatedVideos.slice(0, 20);
 
-  renderVideo.fecha = renderVideo.fecha.replace("%a%", "á");
-  renderVideo.fecha = renderVideo.fecha.replace("%n%", "ñ");
+  renderVideo.fecha = renderVideo?.fecha?.replace("%a%", "á");
+  renderVideo.fecha = renderVideo?.fecha?.replace("%n%", "ñ");
 
 
   const fuenteVideo = (fuente:string) =>{
@@ -40,42 +39,51 @@ export default async function VideoWatch({ params }: any) {
       <span className="font-bold">You</span>
         <span className="text-[#ec567c] font-bold">Porn</span></>
     }
+    else {
+      return <>
+      <span className="font-bold text-[#de2600]">X</span>
+        <span className="font-bold">Videos</span></>
+    }
   }
 
+  
   return (
     <>
       <Navbar />
       <div className="flex">
         <article className="w-5/6 py-2 max-xl:w-full max-sm:px-1">
           <iframe
-            src={renderVideo.url}
+            src={renderVideo?.url}
             allowFullScreen
             // height="481" width="608" scrolling="no"
             className="w-full h-[600px] border-black border-2 rounded-lg max-xl:h-[350px] max-sm:h-[350px]  overflow-hidden"
           ></iframe>
+          {/* <video src={renderVideo?.url}>
+          <source type="mp4" />
+          </video> */}
           <div className="py-2">
             <h3 className="font-semibold text-2xl max-xl:text-lg">
               {
-                titleAcentos(renderVideo.title)
+                titleAcentos(renderVideo?.title)
               }
             </h3>
             <span className="flex gap-1 items-center">
               <AiFillLike />
-              {renderVideo.rating}%
+              {renderVideo?.rating}%
             </span>
-            <span>{renderVideo.views}{' '}<br/></span>
+            <span>{renderVideo?.views}{' '}<br/></span>
             <span>Fuente del video: </span>
             {
-              fuenteVideo(renderVideo.fuente)
+              fuenteVideo(renderVideo?.fuente)
             }
-            <span><br/>Publicado hace: {renderVideo.fecha}</span>
+            <span><br/>Publicado hace: {renderVideo?.fecha}</span>
           </div>
           <div className="border-t-2 border-black py-2 items-center">
             <h4>Estrellas:</h4>
-            {renderVideo.actor.length < 1 ? (
+            {renderVideo?.actor.length < 1 ? (
               <span className="text-[#D63423] font-bold">Unknown</span>
             ) : (
-              renderVideo.actor?.map((actor: string) => {
+              renderVideo?.actor?.map((actor: string) => {
                 return (
                   <Link
                     href={`/actores/name?name=${actor.replace(' ', '-')}`}

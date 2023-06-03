@@ -17,7 +17,11 @@ export class SearchService {
       titleUpper.includes('niño') ||
       titleUpper.includes('niña') ||
       titleUpper.includes('niñas') ||
-      titleUpper.includes('niños')
+      titleUpper.includes('niños') ||
+      titleUpper.includes('child') ||
+      titleUpper.includes('infantile') ||
+      titleUpper.includes('under age') ||
+      titleUpper.includes('children') 
     ) {
       return 'Esta prohibido';
     } else {

@@ -38,6 +38,11 @@ export default function Videos({
       <span className="font-bold">You</span>
         <span className="text-[#ec567c] font-bold">Porn</span></p>
     }
+    else {
+      return <p className="text-xs absolute bottom-2 left-32">
+      <span className="font-bold text-[#de2600]">X</span>
+        <span className="font-bold">Videos</span></p>
+    }
   }
 
   return (

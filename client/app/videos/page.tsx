@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { VideoFormat } from "@/types";
 import { getData } from "./service/videos.service";
 import VideoRenderDos from "@/components/RenderVideos/VideosRenderDos";
+import Footer from "@/components/Footer/Footer";
 
 export default async function SearchVideos({ searchParams }: any) {
   const data: VideoFormat[] = await getData(searchParams.title)
@@ -31,6 +32,7 @@ export default async function SearchVideos({ searchParams }: any) {
           No pudimos encontrar ningun video, prueba buscando otro titulo...
         </div>
       )}
+      <Footer/>
     </main>
   );
 }

@@ -30,7 +30,18 @@ export class VideosService {
   async findAll(page: string) {
     const limit = 48;
     const skip = (parseInt(page) - 1) * limit;
+
+    // const count = await this.videosModel.countDocuments().exec();
+
+    // const randomSkip = Math.floor(Math.random() * count);
+
     let allVideos = await this.videosModel.find().skip(skip).limit(limit).exec();
+
+    // let allVideos = await this.videosModel.aggregate([
+    //   { $sample: { size: count } }, // Select random documents
+    //   { $skip: randomSkip }, // Skip to the random starting document
+    //   { $limit: limit } // Limit the number of documents to retrieve
+    // ]).exec();
     // let allVideos = await this.videosModel.find().exec();
     allVideos = allVideos.sort((a, b) => {
       if (a.views > b.views) return -1;
@@ -48,7 +59,6 @@ export class VideosService {
   }
 
   async findById(id: string) {
-    console.log('Entra para hacer prefetching de los videos')
     try {
         const findVideo = await this.videosModel.findOne({
           _id: id,
@@ -73,12 +83,16 @@ export class VideosService {
         const titleUpper = title?.toLowerCase();
         if (
           titleUpper.includes('menor') ||
-          titleUpper.includes('infantil') ||
-          titleUpper.includes('menores') ||
-          titleUpper.includes('niño') ||
-          titleUpper.includes('niña') ||
-          titleUpper.includes('niñas') ||
-          titleUpper.includes('niños')
+        titleUpper.includes('infantil') ||
+        titleUpper.includes('menores') ||
+        titleUpper.includes('niño') ||
+        titleUpper.includes('niña') ||
+        titleUpper.includes('niñas') ||
+        titleUpper.includes('niños') ||
+        titleUpper.includes('child') ||
+        titleUpper.includes('infantile') ||
+        titleUpper.includes('under age') ||
+        titleUpper.includes('children') 
         ) {
           return [
             {

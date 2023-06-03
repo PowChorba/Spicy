@@ -19,6 +19,15 @@ const nextConfig = {
       },
       {
         hostname: "di1-ph.ypncdn.com"
+      },
+      {
+        hostname: "img-cf.xvideos-cdn.com"
+      },
+      {
+        hostname: "cdn77-pic.xvideos-cdn.com"
+      },
+      {
+        hostname: "img-l3.xvideos-cdn.com"
       }
     ]
   }

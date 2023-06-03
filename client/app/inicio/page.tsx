@@ -4,6 +4,7 @@ import { SearchFormat, VideoFormat } from "@/types";
 import { getSearch, getVideosPage } from "./services/home.service";
 import Link from "next/link";
 import Trending from "@/components/Relacionados/Trending";
+import Footer from "@/components/Footer/Footer";
 
 
 export default async function Home() {
@@ -25,6 +26,7 @@ export default async function Home() {
       </ul>
       </div>
         <VideoRender data={data} params={'1'}/>
+        <Footer/>
     </main>
   );
 }

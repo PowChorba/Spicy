@@ -21,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="juicyads-site-verification" content="1de495bca9a7dc518a6265ac9675c465"></meta>
+        <meta name="exoclick-site-verification" content="f6ba2c2a882f743856e82af526106b2f"></meta>
         <script type="application/javascript" src="https://syndication.realsrv.com/splash.php?idzone=4999306"></script>
         <script
             async

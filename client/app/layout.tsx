@@ -1,3 +1,4 @@
+import loadExoClick from '@/helper/AdScript'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
@@ -14,13 +15,25 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     
     <html lang="en">
       <head>
         <meta name="juicyads-site-verification" content="1de495bca9a7dc518a6265ac9675c465"></meta>
+        <script type="application/javascript" src="https://syndication.realsrv.com/splash.php?idzone=4999306"></script>
+        <script
+            async
+            type="application/javascript"
+            src="https://a.realsrv.com/ad-provider.js"
+          ></script>
+          <script
+            type="application/javascript"
+            dangerouslySetInnerHTML={{
+              __html: '(AdProvider = window.AdProvider || []).push({"serve": {}});',
+            }}
+          ></script>
         <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
-        <ins id="1023600" data-width="308" data-height="298"></ins>
         <script type="text/javascript" data-cfasync="false" async dangerouslySetInnerHTML={{
               __html: `(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1023600});`,
             }}></script>

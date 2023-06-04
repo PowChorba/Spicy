@@ -13,7 +13,6 @@ export default function Home() {
   
   return (
     <main className="w-2/3 flex-col justify-center items-center mx-auto my-20 border-2 border-grey-50 rounded-md p-8 shadow-[10px_10px_5px_-3px_rgba(0,0,0,0.22)] max-sm:w-full max-sm:my-0">
-      <ins className="adsbyexoclick" data-zoneid="4992990"></ins>
       <h2 className="text-5xl py-4 text-center">Spicy<span className="text-[#D63423]">X</span></h2>
       <div className="py-4 px-2 bg-gray-300 rounded-md text-left">
         <span>

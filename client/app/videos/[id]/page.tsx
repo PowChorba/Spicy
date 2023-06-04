@@ -50,7 +50,6 @@ export default async function VideoWatch({ params }: any) {
   return (
     <>
       <Navbar />
-      <ins id="1023600" data-width="308" data-height="298" className="absolute top-[50%] left-0"></ins>
       <div className="flex">
         <article className="w-5/6 py-2 max-xl:w-full max-sm:px-1">
           <iframe
@@ -147,6 +146,7 @@ export default async function VideoWatch({ params }: any) {
               />
             );
           })}
+          <ins className="adsbyexoclick" data-zoneid="4999360"></ins> 
           </div>
         </aside>
       </div>

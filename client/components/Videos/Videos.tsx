@@ -47,13 +47,13 @@ export default function Videos({
 
   return (
     <li onClick={() => router.push(`/videos/${_id}`)} className="mt-2 break-words list-none bg-[#00000015] rounded-lg relative text-ellipsis shadow-[10px_10px_5px_-6px_rgba(0,0,0,0.21)] overflow-hidden max-h-[325px] cursor-pointer">
-      <div className="relative">
+      <div className="relative transition-all ease-in-out hover:scale-105">
         <Image
           src={imgPreview}
           alt="T"
           width="375"
           height="350"
-          className="rounded-tl-lg rounded-tr-lg transition-all ease-in-out hover:scale-110"
+          className="rounded-tl-lg rounded-tr-lg"
         />
         <span className="text-sm px-1 text-[#F9005F] font-semibold absolute bottom-0 right-0 bg-[#252525]">
           {duration}

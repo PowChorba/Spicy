@@ -18,7 +18,7 @@ export default function CategoryCatalog(){
         //     return <CatalogRecom/>
         // }
         else {
-            return <div>Holaaa</div>
+            return ''
         }
     }
 

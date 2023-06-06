@@ -41,12 +41,12 @@ export default function PaginationDos({ prev, next, actual }: Props) {
       <span className="p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md bg-[#D63423]">
         {actual}
       </span>
-      <button onClick={handleNext} className={actual === '209' ? 'hidden' : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"}>
+      <button onClick={handleNext} className={actual === '208' ? 'hidden' : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"}>
         {next}
       </button>
-      <span className={actual === '209' || actual === '208' ? 'hidden' : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"}>...</span>
-      <button onClick={() => router.push('/inicio/209')} className={actual === '209' || actual === '208' ? 'hidden' : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"}>
-        209
+      <span className={actual === '208' || actual === '207' ? 'hidden' : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"}>...</span>
+      <button onClick={() => router.push('/inicio/208')} className={actual === '208' || actual === '207' ? 'hidden' : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"}>
+        208
       </button>
     </>
   );

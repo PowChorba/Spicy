@@ -3,6 +3,7 @@ import { getActorIndividual } from "../service/pornstar.service";
 import PornstartCardDos from "@/components/Pornstars/PornstarCardDos";
 import Videos from "@/components/Videos/Videos";
 import { VideoFormat } from "@/types";
+import Link from "next/link";
 
 export default async function InvididualActor({ searchParams }: any) {
   let nameActor = searchParams.name.replace("-", " ");
@@ -22,6 +23,7 @@ export default async function InvididualActor({ searchParams }: any) {
         </div>
       ) : (
         <>
+          {/* <Link href={} className="mt-2 font-bold">Actores {'> '}<span className="text-[#D63423]">{actor.name}</span> </Link> */}
           <div className="flex gap-10 max-sm:gap-2 items-center justify-evenly my-4 max-sm:my-2 bg-[#252525] p-2 rounded-lg">
             <PornstartCardDos data={actor} videosLength={videosLength} />
           </div>

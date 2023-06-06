@@ -1,16 +1,17 @@
 import Navbar from "@/components/Navbar/Navbar";
-import VideoRender from "@/components/RenderVideos/VideosRender";
 import { SearchFormat, VideoFormat } from "@/types";
-import { getSearch, getVideosPage } from "./services/home.service";
-import Link from "next/link";
+import { getCategory, getInicioVideo, getPornstart, getSearch } from "./services/home.service";
 import Trending from "@/components/Relacionados/Trending";
 import Footer from "@/components/Footer/Footer";
+import InicioRender from "@/components/RenderVideos/InicioRender";
 
 
 export default async function Home() {
-  let data: VideoFormat[] = await getVideosPage('1');
+  let data: VideoFormat[] = await getInicioVideo();
   const search: SearchFormat[] = await getSearch()
-  
+  const actores = await getPornstart()
+  const category = await getCategory()
+
 
   return (
     <main>
@@ -25,7 +26,7 @@ export default async function Home() {
         }
       </ul>
       </div>
-        <VideoRender data={data} params={'1'}/>
+        <InicioRender data={data} params={'1'} actores={actores} category={category}/>
         <Footer/>
     </main>
   );

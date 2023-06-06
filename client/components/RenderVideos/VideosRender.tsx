@@ -37,25 +37,6 @@ export default function VideoRender({ data, params }: Props) {
         }
       </div>
       <div className="mt-2 py-2 rounded-lg text-center bg-[#252525]">
-        {/* <Link
-          href={`/inicio/${prevPage}`}
-          className={
-            prevPage === 0
-              ? "hidden"
-              : "p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"
-          }
-        >
-          {prevPage}
-        </Link>
-        <span className="p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md bg-[#D63423]">
-          {params}
-        </span>
-        <Link
-          href={`/inicio/${nextPage}`}
-          className="p-2 border-2 mr-2 ml-2 text-white text-xs rounded-md border-[#D63423]"
-        >
-          {nextPage}
-        </Link> */}
         <PaginationDos next={nextPage} prev={prevPage} actual={params}/>
       </div>
     </>

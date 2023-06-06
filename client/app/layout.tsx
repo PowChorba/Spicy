@@ -34,6 +34,7 @@ export default function RootLayout({
             }}
           ></script>
         <script type="application/javascript" src="https://syndication.realsrv.com/splash.php?idzone=4999350&capping=0"></script>
+        <script type="text/javascript" src="https://js.juicyads.com/jp.php?c=34d433u2q224u4q2w2f4x25434&u=http%3A%2F%2Fwww.juicyads.rocks"></script>
         <script type="application/javascript" src="https://syndication.realsrv.com/splash.php?idzone=4999354"></script>
         <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
         <script type="text/javascript" data-cfasync="false" async dangerouslySetInnerHTML={{

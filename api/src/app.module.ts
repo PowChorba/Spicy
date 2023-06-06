@@ -6,6 +6,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CategoryModule } from './category/category.module';
 import { SearchModule } from './search/search.module';
 import { PornstarModule } from './pornstar/pornstar.module';
+import { InicioModule } from './inicio/inicio.module';
+import { NavbarModule } from './navbar/navbar.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { PornstarModule } from './pornstar/pornstar.module';
     CategoryModule,
     SearchModule,
     PornstarModule,
+    InicioModule,
+    NavbarModule,
   ],
   controllers: [AppController],
   providers: [AppService],

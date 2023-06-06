@@ -11,6 +11,28 @@ export const getData = async (searchQuery: string | undefined) => {
     }
   };
 
+  export const getDataVideos = async (searchQuery: string | undefined) => {
+    try {
+      const apiData = await axios.get(
+        `http://localhost:3001/navbar/video?title=${searchQuery}`
+      );
+        return apiData.data;
+    } catch (error) {
+      console.log("Error fatal");
+    }
+  };
+
+  export const getDataPornstar = async (searchQuery: string | undefined) => {
+    try {
+      const apiData = await axios.get(
+        `http://localhost:3001/navbar/pornstar?title=${searchQuery}`
+      );
+        return apiData.data;
+    } catch (error) {
+      console.log("Error fatal");
+    }
+  };
+
   
 export async function getVideo(id: string) {
     try {

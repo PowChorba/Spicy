@@ -25,4 +25,31 @@ export async function getSearch(){
   }catch(error){
     console.log(error)
   }
-}  
+}
+
+export async function getPornstart(){
+  try {
+    const apiData = await axios.get(`http://localhost:3001/inicio/pornstar`)
+    return apiData.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getInicioVideo(){
+  try {
+    const apiData = await axios.get(`http://localhost:3001/inicio/videos`)
+    return apiData.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getCategory(){
+  try {
+    const apiData = await axios.get(`http://localhost:3001/inicio/category`)
+    return apiData.data
+  } catch (error) {
+    console.log(error)
+  }
+}

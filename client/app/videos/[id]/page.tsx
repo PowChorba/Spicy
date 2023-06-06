@@ -130,7 +130,7 @@ export default async function VideoWatch({ params }: any) {
             Ver mas
           </p>
         </article>
-        <aside className="w-1/6 text-center p-2 max-xl:hidden">
+        <aside className="w-1/6 text-center p-2 max-xl:hidden flex-col justify-center">
           <h5 className="font-bold border-b-2 border-black">
             Videos recomendados
           </h5>
@@ -146,6 +146,7 @@ export default async function VideoWatch({ params }: any) {
               />
             );
           })}
+          <a href="https://www.exoclick.com/signup/?login=iuGhen"><img src="https://www.exoclick.com/banners/120x150.gif" /></a>
           <ins className="adsbyexoclick" data-zoneid="4999360"></ins> 
           </div>
         </aside>

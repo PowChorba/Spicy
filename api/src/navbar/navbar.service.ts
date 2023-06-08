@@ -37,12 +37,20 @@ export class NavbarService {
           title = title.toLowerCase();
           let findVideo: VideosType[] = await this.videosModel.find({"title" : {$regex : title, $options: 'i'}});
         //   findVideo = findVideo.filter((e) => e.title.toLowerCase().includes(title));
+        // if (findVideo.length === 0) {
+        //   let findVideo: VideosType[] = await this.videosModel.find({"title" : {$regex : title, $options: 'i'}});
+        //   findVideo = findVideo.sort((a, b) => {
+        //     if (a.views.includes('M') > b.views.includes('M')) return -1;
+        //     if (a.views.includes('M') < b.views.includes('M')) return 1;
+        //     return 0;
+        //   });
+        // }
           findVideo = findVideo.sort((a, b) => {
             if (a.views.includes('M') > b.views.includes('M')) return -1;
             if (a.views.includes('M') < b.views.includes('M')) return 1;
             return 0;
           });
-          console.log('Llego aca')
+          console.log(findVideo)
           return findVideo;
         }
       }
@@ -71,7 +79,8 @@ export class NavbarService {
         } else {
           title = title.toLowerCase();
         //   let findVideo = await this.pornstarModel.find();
-          const findVideo = await this.pornstarModel.find({"name" : {$regex : title, $options: 'i'}});
+          let findVideo = await this.pornstarModel.find({"name" : {$regex : title, $options: 'i'}});
+          findVideo = findVideo.splice(0,4)
         // findVideo = findVideo.filter(e => e.name.toLowerCase().includes(title))
         //   findVideo = findVideo.sort((a, b) => {
         //     if (a.views.includes('M') > b.views.includes('M')) return -1;

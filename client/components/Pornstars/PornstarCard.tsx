@@ -8,9 +8,10 @@ interface Props {
     _id: string
     index: number
     videos: number
+    ranking: number
 }
 
-export default function PornstarCard({name, img, _id, index, videos}:Props){
+export default function PornstarCard({name, img, _id, index, videos, ranking}:Props){
     const nameModify = name?.replace(' ', '-')
     const router = useRouter()
 
@@ -27,12 +28,12 @@ export default function PornstarCard({name, img, _id, index, videos}:Props){
         />
         <h4 className="font-bold py-2 text-white">{name}</h4>
         <div className="flex justify-between px-2">
-        {/* <span className="text-white text-sm">
-            Ranking: <span className="text-[#D63423]">{index + 1}</span>
-        </span> */}
         <span className="text-white text-sm">
+            Ranking: <span className="text-[#D63423]">{ranking}</span>
+        </span>
+        {/* <span className="text-white text-sm">
             Videos: <span className="text-[#D63423]">{videos}</span>
-            </span>
+            </span> */}
         </div>
     </li>)
 }   

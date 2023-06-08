@@ -14,7 +14,7 @@ export default async function Pornstars(){
           <ul className="grid grid-cols-6 mt-2 gap-2 max-xl:grid-cols-3 max-sm:grid-cols-2">
             {
                 data.map((e, index) => {
-                    return <PornstarCard key={e._id}  name={e.name} img={e.img} _id={e._id} index={index} videos={e.videos}/>
+                    return <PornstarCard key={e._id}  name={e.name} img={e.img} _id={e._id} index={index} videos={e.videos} ranking={e.ranking}/>
                 })
             }
           </ul>

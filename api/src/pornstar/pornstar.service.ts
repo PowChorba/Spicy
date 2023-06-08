@@ -28,7 +28,12 @@ export class PornstarService {
         const limit = 48;
         const skip = (parseInt(page) - 1) * limit;
         // const allVideos = await this.videosModel.find()
-        const modelos: PornstarPost[] = (await this.pornstarModel.find().sort({videos: -1}).skip(skip).limit(limit).exec())
+        const modelos: PornstarPost[] = (await this.pornstarModel.find().sort({ranking: 1}).skip(skip).limit(limit).exec())
+        // modelos = modelos.sort((a,b) => {
+        //     if(a.ranking > b.ranking) return 1
+        //     if(a.ranking < b.ranking) return -1
+        //     return 0
+        // })
         // let modelos = await this.pornstarModel.find()
         // for(let i=0; i < modelos.length; i++){
         //     const videos = allVideos.filter(video => video.actor.includes(modelos[i].name))
@@ -42,7 +47,7 @@ export class PornstarService {
         // })
         // for(let i=0; i < modelos.length; i++){
         //     modelos[i].ranking = i + 1
-        //     modelos[i].save()
+        //     await this.pornstarModel.updateOne({ _id: modelos[i]._id }, { ranking: modelos[i].ranking });
         // }
         
         // const slicedModelos = modelos.slice(skip, skip + limit);

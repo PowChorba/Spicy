@@ -26,6 +26,7 @@ export default async function Home() {
         }
       </ul>
       </div>
+        {/* <InicioRender /> */}
         <InicioRender data={data} params={'1'} actores={actores} category={category}/>
         <Footer/>
     </main>

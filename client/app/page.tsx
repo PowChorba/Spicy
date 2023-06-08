@@ -5,7 +5,6 @@ import Cookies from 'js-cookie'
 export default function Home() {
   const navigate = useRouter()
 
-
   const handleEdad = () => {
     Cookies.set('edad', 'true')
     navigate.push('/inicio')

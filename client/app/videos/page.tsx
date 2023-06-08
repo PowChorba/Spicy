@@ -8,7 +8,7 @@ import PornstarCard from "@/components/Pornstars/PornstarCard";
 export default async function SearchVideos({ searchParams }: any) {
   const data: VideoFormat[] = await getDataVideos(searchParams.title)
   let dataPornstar: PornstarFormat[] = await getDataPornstar(searchParams.title)
-  dataPornstar = dataPornstar.splice(0,5)
+  // dataPornstar = dataPornstar.splice(0,4)
 
   if(data[0]?.title?.includes('Esta prohibido la busqueda y difunsion de videos relacionados a menores de edad. Porfavor no vuelvas a introduccir algo relacionado.')){
     return(
@@ -30,7 +30,7 @@ export default async function SearchVideos({ searchParams }: any) {
       <ul className={dataPornstar.length < 1 ? 'hidden' : "grid grid-cols-5 mt-2 gap-2 max-xl:grid-cols-3 max-sm:grid-cols-2"}>
       {
         dataPornstar?.map((e,index) => {
-          return <PornstarCard key={e._id}  name={e.name} img={e.img} _id={e._id} index={index} videos={e.videos}/>
+          return <PornstarCard key={e._id}  name={e.name} img={e.img} _id={e._id} index={index} videos={e.videos} ranking={e.ranking}/>
         })
       }
       </ul>

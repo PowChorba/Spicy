@@ -51,3 +51,37 @@ export interface PornstarFormat {
   videos: number
   ranking: number
 }
+
+interface VideoFormatComplete {
+  msg: boolean;
+  data: Data;
+}
+
+interface VideoData {
+  _id: string;
+  title: string;
+  url: string;
+  duration: string;
+  category: number[];
+  rating: number;
+  imgPreview: string;
+  vidPreview: string;
+  actor: string[];
+  views: string;
+  fecha: string;
+  fuente: string;
+  counter: number;
+}
+
+
+export interface PornstarComplete {
+  msg: boolean;
+  data: Data;
+}
+
+export interface DataPornstar {
+  pornstar: PornstarFormat[];
+  findAllVideos: VideoData[];
+}
+
+

@@ -18,9 +18,9 @@ interface Props {
 export default function InicioRender({ data, params, actores, category}: Props) {
   const nextPage = 2;
   const prevPage = 1 - 1;
-  const dataUno = data.slice(0,8)
-  const dataDos = data.slice(9,17)
-  const dataTres = data.slice(20,28)
+  const dataUno = data?.slice(0,8)
+  const dataDos = data?.slice(9,17)
+  const dataTres = data?.slice(20,28)
 
 
     

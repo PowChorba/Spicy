@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Videos, VideosSchema } from './videos.schema';
 import { Model } from 'mongoose';
@@ -65,15 +65,17 @@ export class VideosService {
         });
         if(findVideo.counter) {
           findVideo.counter = findVideo.counter + 1
-          return findVideo.save()
+          await findVideo.save()
+          return {msg: true, data: findVideo}
 
         }
         else {
           findVideo.counter = 1
-          return findVideo.save()
+          await findVideo.save()
+          return {msg: true, data: findVideo}
         }
     } catch (error) {
-      console.log(error);
+      return {msg: false}
     }
   }
 

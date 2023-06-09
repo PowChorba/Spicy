@@ -55,11 +55,18 @@ export class PornstarService {
     }
 
     async findByName(name: string){
-        let findAllVideos = (await this.videosModel.find({"actor" : {$regex : name}}))
-        findAllVideos = findAllVideos.filter(e => e.actor.includes(name))
-        const pornstar = await this.pornstarModel.find({
-            name: name
-        })
-        return [pornstar, findAllVideos]
+        try {
+            let findAllVideos = (await this.videosModel.find({"actor" : {$regex : name}}))
+            findAllVideos = findAllVideos.filter(e => e.actor.includes(name))
+            const pornstar = await this.pornstarModel.find({
+                name: name
+            })
+            if(pornstar.length === 0){
+                return {msg: false}
+            }
+            return {msg: true, data:{pornstar,findAllVideos}}
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

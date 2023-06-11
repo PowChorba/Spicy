@@ -7,5 +7,7 @@ export default function LayoutInicio({children,
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="w-full mx-auto ">{children}</div>;
+  return <>
+    <div className="w-full mx-auto ">{children}</div>
+  </>
 }

@@ -1,4 +1,3 @@
-'use client'
 import { getCategoryVideos } from "@/app/categorias/service/category.service";
 import { categoryName, getRandomNumber, randomCategory, randomSort, titleAcentos } from "@/app/videos/[id]/utils/videos.helper";
 import { getAllVideos } from "@/app/videos/service/videos.service";
@@ -8,43 +7,46 @@ import { AiFillLike } from "react-icons/ai";
 import Link from "next/link";
 import MediumVideos from "./MediumVideos";
 import SmallVideos from "./SmallVideos";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import { RaceBy } from '@uiball/loaders'
 
 
 interface Props{
     renderVideo: VideoFormatComplete
+    categoryFilter: CategoryReduce[]
+    videosFilter: VideoFormat[]
+    relatedVideo: VideoFormat[]
 }
 
-export default function VideoWatch({ renderVideo }: Props) {
+export default function VideoWatch({ renderVideo,categoryFilter,videosFilter, relatedVideo }: Props) {
   const randomNumber = getRandomNumber(1, 49);
-  const [allVideos, setAllVideos] = useState<VideoFormat[]>([])
-  const [relatedVideo, setRelatedVideos] = useState<VideoFormat[]>([])
+  // const [allVideos, setAllVideos] = useState<VideoFormat[]>([])
+  // const [relatedVideo, setRelatedVideos] = useState<VideoFormat[]>([])
   // Para agarrar un categoria random, entre todas las del video.
-  const categoryFilter: CategoryReduce[] = categoryName(renderVideo?.data?.category)
-  const category = randomCategory(renderVideo?.data?.category)
+  // const categoryFilter: CategoryReduce[] = categoryName(renderVideo?.data?.category)
+  // const category = randomCategory(renderVideo?.data?.category)
 
   // Para mostrar los videos del aside
-  const videosFilter = allVideos.slice(randomNumber, randomNumber + 5);
+  // const videosFilter = allVideos.slice(randomNumber, randomNumber + 5);
   // Para mostrar los videos abajo de los datos
 
   let relatedVideos = relatedVideo?.filter((e) => e.title !== renderVideo?.data?.title);
   relatedVideos = relatedVideos?.sort(randomSort);
   relatedVideos = relatedVideos?.slice(0, 20);
 
-  useEffect(() => {
-    const videos = async () => {
-        const data = await getAllVideos(randomNumber)
-        setAllVideos(data)
-    }
-    const videosRelated = async () => {
-        const data = await getCategoryVideos(category)
-        setRelatedVideos(data)
-    }
-    videos()
-    videosRelated()
-  }, [])
+  // useEffect(() => {
+  //   const videos = async () => {
+  //       const data = await getAllVideos(randomNumber)
+  //       setAllVideos(data)
+  //   }
+  //   const videosRelated = async () => {
+  //       const data = await getCategoryVideos(category)
+  //       setRelatedVideos(data)
+  //   }
+  //   videos()
+  //   videosRelated()
+  // }, [])
 
   renderVideo.data.fecha = renderVideo?.data?.fecha?.replace("%a%", "á");
   renderVideo.data.fecha = renderVideo?.data?.fecha?.replace("%n%", "ñ");

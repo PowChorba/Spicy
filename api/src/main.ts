@@ -7,7 +7,7 @@ async function bootstrap() {
   app.enableCors({
     allowedHeaders:[ 'Accept', 'Accept-Version', 'Content-Type', 'Api-Version', 'Origin', 'X-Requested-With',
     'Authorization' ],
-    origin: ['http://localhost:3000', 'https://pornspicyx.com']
+    origin: ['http://localhost:3000']
   });
   await app.listen(3001);
 }
